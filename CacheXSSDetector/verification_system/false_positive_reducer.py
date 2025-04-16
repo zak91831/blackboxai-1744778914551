@@ -14,6 +14,8 @@ from datetime import datetime
 import random
 import string
 from urllib.parse import urlparse, parse_qs, urlencode
+from collections import defaultdict
+import statistics
 
 class FalsePositiveReducer:
     """
