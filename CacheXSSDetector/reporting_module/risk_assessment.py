@@ -8,7 +8,9 @@ based on various factors including impact, exploitability, and cache characteris
 import logging
 from typing import Dict, List, Optional, Set, Tuple
 from datetime import datetime
-from collections import defaultdict
+from collections import defaultdict, Counter
+import statistics
+import math
 
 class RiskAssessor:
     """
