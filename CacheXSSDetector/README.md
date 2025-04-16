@@ -1,0 +1,207 @@
+# CacheXSSDetector
+
+A sophisticated security tool for detecting and analyzing cache-based Cross-Site Scripting (XSS) vulnerabilities in web applications.
+
+## Overview
+
+CacheXSSDetector is a specialized security testing tool designed to identify, verify, and assess cache-based XSS vulnerabilities. It focuses on detecting vulnerabilities that arise from the interaction between web caching systems and XSS payloads, including cache poisoning, cache deception, and persistent XSS through cache mechanisms.
+
+## Features
+
+### Core Scanning Capabilities
+- **URL Path Manipulation**: Advanced path traversal and parameter manipulation for cache testing
+- **Cache Behavior Analysis**: In-depth analysis of caching patterns and behaviors
+- **XSS Payload Generation**: Sophisticated payload generation with cache-aware capabilities
+- **Response Analysis**: Comprehensive analysis of cached responses and XSS indicators
+
+### Request Components
+- **HTTP Client**: Robust HTTP client with cache-aware request handling
+- **Header Manipulation**: Advanced header manipulation for cache testing
+- **Proxy Integration**: Seamless integration with HTTP/HTTPS proxies
+
+### Verification System
+- **Multi-Client Simulator**: Simulation of multiple clients for cache behavior testing
+- **Cache Hit/Miss Detection**: Accurate detection of cache hits and misses
+- **False Positive Reduction**: Advanced algorithms to minimize false positives
+
+### Reporting System
+- **Vulnerability Classification**: Detailed classification of discovered vulnerabilities
+- **Risk Assessment**: Comprehensive risk assessment and scoring
+- **Report Generation**: Detailed HTML reports with visualizations
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/CacheXSSDetector.git
+cd CacheXSSDetector
+```
+
+2. Create a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+### Basic Usage
+```bash
+python cachexssdetector.py scan --url https://example.com
+```
+
+### Advanced Options
+```bash
+python cachexssdetector.py scan \
+    --url https://example.com \
+    --config custom_config.yaml \
+    --output report.html \
+    --verbose
+```
+
+### Configuration
+Create a custom configuration file by copying and modifying the default config:
+```bash
+cp config.yaml custom_config.yaml
+```
+
+## Configuration Options
+
+### Core Scanner Settings
+```yaml
+core_scanner:
+  url_path:
+    max_path_depth: 5
+    max_params: 10
+  cache_behavior:
+    min_samples: 5
+    time_window: 300
+```
+
+### Request Components Settings
+```yaml
+request_components:
+  http_client:
+    timeout: 30
+    max_retries: 3
+  header_manipulation:
+    enable_custom_headers: true
+```
+
+### Verification System Settings
+```yaml
+verification_system:
+  multi_client:
+    num_clients: 5
+    request_delay: 1.0
+```
+
+## Architecture
+
+### Core Components
+1. **Core Scanner**
+   - URL Path Manipulation
+   - Cache Behavior Analysis
+   - XSS Payload Generator
+   - Response Analyzer
+
+2. **Request Components**
+   - HTTP Client
+   - Header Manipulation
+   - Proxy Integration
+
+3. **Verification System**
+   - Multi-Client Simulator
+   - Cache Hit/Miss Detector
+   - False Positive Reducer
+
+4. **Reporting Module**
+   - Vulnerability Classification
+   - Risk Assessment
+   - Report Generator
+
+## Development
+
+### Setting Up Development Environment
+```bash
+# Install development dependencies
+pip install -r requirements-dev.txt
+
+# Run tests
+pytest tests/
+
+# Run linting
+flake8 cachexssdetector/
+```
+
+### Contributing
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests and linting
+5. Submit a pull request
+
+## Security Considerations
+
+### Responsible Testing
+- Always obtain proper authorization before testing
+- Follow responsible disclosure practices
+- Be aware of potential impact on cache systems
+
+### Limitations
+- Tool may impact cache performance
+- Some detection methods are timing-dependent
+- False positives may occur in complex scenarios
+
+## Best Practices
+
+### Cache Testing
+1. Start with non-critical systems
+2. Monitor cache performance during testing
+3. Clear caches after testing
+4. Document all findings and impacts
+
+### Mitigation Strategies
+1. Implement proper cache controls
+2. Use cache segmentation
+3. Apply security headers
+4. Regular cache validation
+
+## Troubleshooting
+
+### Common Issues
+1. **Connection Errors**
+   - Check proxy settings
+   - Verify target accessibility
+   - Review network configurations
+
+2. **False Positives**
+   - Adjust confidence thresholds
+   - Increase verification rounds
+   - Review cache patterns
+
+3. **Performance Issues**
+   - Adjust request delays
+   - Reduce parallel requests
+   - Monitor system resources
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Thanks to all contributors
+- Special thanks to the security research community
+- Inspired by various web security tools and research
+
+## Contact
+
+- Report bugs: [Issue Tracker](https://github.com/yourusername/CacheXSSDetector/issues)
+- Follow updates: [Twitter](https://twitter.com/yourusername)
+- Questions: [Discussions](https://github.com/yourusername/CacheXSSDetector/discussions)
