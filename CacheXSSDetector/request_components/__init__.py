@@ -10,7 +10,7 @@ from typing import Dict, List, Optional, Set, Tuple
 import asyncio
 from .http_client import HTTPClient
 from .header_manipulation import HeaderManipulator
-from .proxy_integration import ProxyIntegrator
+from .proxy_integration import ProxyIntegration
 
 class RequestHandler:
     """
@@ -30,7 +30,7 @@ class RequestHandler:
         # Initialize components
         self.http_client = HTTPClient(config.get('http_client', {}))
         self.header_manipulator = HeaderManipulator(config.get('header_manipulation', {}))
-        self.proxy_integrator = ProxyIntegrator(config.get('proxy', {}))
+        self.proxy_integrator = ProxyIntegration(config.get('proxy', {}))
         
         # Request configuration
         self.max_concurrent = config.get('max_concurrent_requests', 10)
