@@ -1,0 +1,102 @@
+{
+    "log_level": "INFO",
+    "log_dir": "logs",
+    "output_dir": "reports",
+    "core_scanner": {
+        "max_depth": 3,
+        "max_payloads": 10,
+        "scan_timeout": 3600,
+        "url_path": {
+            "max_variations": 5,
+            "path_patterns": ["/*", "/*/", "/%2f/"]
+        },
+        "cache_behavior": {
+            "min_samples": 5,
+            "time_window": 300,
+            "cache_ttl_threshold": 3600
+        },
+        "payload_generator": {
+            "complexity": "medium",
+            "evasion_techniques": ["basic", "encoding"],
+            "include_custom_payloads": true
+        },
+        "response_analyzer": {
+            "detection_threshold": 0.7,
+            "context_analysis": true
+        }
+    },
+    "verification": {
+        "verification_rounds": 3,
+        "min_confidence": 0.8,
+        "timeout": 300,
+        "multi_client": {
+            "num_clients": 5,
+            "request_delay": 1.0,
+            "max_requests": 100,
+            "timeout": 30
+        },
+        "cache_detector": {
+            "detection_threshold": 0.7,
+            "min_samples": 3
+        },
+        "false_positive": {
+            "verification_threshold": 0.8,
+            "dynamic_verification": true
+        }
+    },
+    "risk_assessment": {
+        "default_severity": "medium",
+        "impact_weight": 0.4,
+        "exploitability_weight": 0.35,
+        "cache_weight": 0.25
+    },
+    "classification": {
+        "classification_threshold": 0.7,
+        "use_machine_learning": false
+    },
+    "reporting": {
+        "report_format": "html",
+        "include_evidence": true,
+        "include_technical_details": true,
+        "include_recommendations": true,
+        "company_info": {
+            "name": "Security Research Team",
+            "logo": "",
+            "website": "",
+            "contact_email": ""
+        },
+        "customization": {
+            "colors": {
+                "primary": "#4F46E5",
+                "secondary": "#6B7280",
+                "success": "#10B981",
+                "danger": "#EF4444",
+                "warning": "#F59E0B",
+                "info": "#3B82F6"
+            }
+        }
+    },
+    "request_components": {
+        "http_client": {
+            "request_timeout": 30,
+            "max_retries": 3,
+            "retry_delay": 1,
+            "verify_ssl": true,
+            "follow_redirects": true,
+            "user_agent": "CacheXSSDetector/1.0"
+        },
+        "header_manipulation": {
+            "default_headers": true,
+            "randomize_order": false
+        },
+        "proxy": {
+            "enabled": false,
+            "url": "",
+            "rotation_strategy": "round_robin",
+            "health_check_on_start": true,
+            "health_check_url": "https://www.example.com",
+            "health_check_timeout": 10,
+            "disable_unhealthy_proxies": true
+        }
+    }
+}
