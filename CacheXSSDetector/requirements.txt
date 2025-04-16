@@ -29,6 +29,8 @@ seaborn>=0.11.2
 jinja2>=3.1.1
 pdfkit>=1.0.0
 weasyprint>=54.3
+markdown2>=2.4.0
+plotly>=5.6.0
 
 # Machine Learning
 scikit-learn>=1.0.2
