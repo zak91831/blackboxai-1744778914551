@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cache-Based XSS Vulnerability Report</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">Cache-Based XSS Vulnerability Report</h1>
+                    <p class="mt-1 text-sm text-gray-500">Generated on {{ metadata.generated_at }}</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-gray-600">Scanner Version: {{ metadata.version }}</p>
+                    <p class="text-sm text-gray-600">Scan Duration: {{ metadata.scan_duration }}s</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Executive Summary -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <div class="bg-white shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">Executive Summary</h2>
+                
+                <!-- Summary Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm font-medium text-gray-500">Total Findings</p>
+                        <p class="mt-1 text-3xl font-semibold text-gray-900">{{ summary.total_findings }}</p>
+                    </div>
+                    {% for level, count in summary.risk_levels.items() %}
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm font-medium text-gray-500">{{ level|title }} Risk</p>
+                        <p class="mt-1 text-3xl font-semibold text-{{ level_colors[level] }}">{{ count }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Key Risks -->
+                {% if summary.key_risks %}
+                <div class="mt-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">Key Risks</h3>
+                    <div class="space-y-4">
+                        {% for risk in summary.key_risks %}
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-exclamation-triangle text-red-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="text-sm font-medium text-red-800">{{ risk.title }}</h4>
+                                    <p class="mt-1 text-sm text-red-700">{{ risk.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Findings -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <div class="bg-white shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">Detailed Findings</h2>
+                
+                <!-- Findings List -->
+                <div class="space-y-6">
+                    {% for finding in findings %}
+                    <div class="border rounded-lg overflow-hidden">
+                        <!-- Finding Header -->
+                        <div class="bg-gray-50 px-4 py-3 border-b">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-medium text-gray-900">{{ finding.title }}</h3>
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-{{ severity_colors[finding.severity] }}-100 text-{{ severity_colors[finding.severity] }}-800">
+                                    {{ finding.severity|title }}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Finding Details -->
+                        <div class="px-4 py-4">
+                            <!-- Description -->
+                            <div class="mb-4">
+                                <h4 class="text-sm font-medium text-gray-900 mb-2">Description</h4>
+                                <p class="text-sm text-gray-600">{{ finding.description }}</p>
+                            </div>
+                            
+                            <!-- Technical Details -->
+                            <div class="mb-4">
+                                <h4 class="text-sm font-medium text-gray-900 mb-2">Technical Details</h4>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <dl class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <dt class="text-xs font-medium text-gray-500">URL</dt>
+                                            <dd class="mt-1 text-sm text-gray-900">{{ finding.technical_details.url }}</dd>
+                                        </div>
+                                        <div>
+                                            <dt class="text-xs font-medium text-gray-500">Method</dt>
+                                            <dd class="mt-1 text-sm text-gray-900">{{ finding.technical_details.method }}</dd>
+                                        </div>
+                                        <div>
+                                            <dt class="text-xs font-medium text-gray-500">Response Code</dt>
+                                            <dd class="mt-1 text-sm text-gray-900">{{ finding.technical_details.response_code }}</dd>
+                                        </div>
+                                    </dl>
+                                </div>
+                            </div>
+                            
+                            <!-- Cache Analysis -->
+                            <div class="mb-4">
+                                <h4 class="text-sm font-medium text-gray-900 mb-2">Cache Analysis</h4>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <dl class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div>
+                                            <dt class="text-xs font-medium text-gray-500">Cache Type</dt>
+                                            <dd class="mt-1 text-sm text-gray-900">{{ finding.cache_analysis.cache_type }}</dd>
+                                        </div>
+                                        <div>
+                                            <dt class="text-xs font-medium text-gray-500">Persistence</dt>
+                                            <dd class="mt-1 text-sm text-gray-900">{{ finding.cache_analysis.persistence }}</dd>
+                                        </div>
+                                        <div>
+                                            <dt class="text-xs font-medium text-gray-500">Hit Rate</dt>
+                                            <dd class="mt-1 text-sm text-gray-900">{{ "%.2f"|format(finding.cache_analysis.hit_rate * 100) }}%</dd>
+                                        </div>
+                                    </dl>
+                                </div>
+                            </div>
+                            
+                            <!-- Evidence -->
+                            {% if finding.evidence %}
+                            <div class="mb-4">
+                                <h4 class="text-sm font-medium text-gray-900 mb-2">Evidence</h4>
+                                <div class="bg-gray-50 rounded p-3">
+                                    <!-- Screenshots -->
+                                    {% if finding.evidence.screenshots %}
+                                    <div class="mb-3">
+                                        <h5 class="text-xs font-medium text-gray-500 mb-2">Screenshots</h5>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            {% for screenshot in finding.evidence.screenshots %}
+                                            <img src="{{ screenshot }}" alt="Evidence Screenshot" class="rounded shadow-sm">
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    <!-- Logs -->
+                                    {% if finding.evidence.logs %}
+                                    <div>
+                                        <h5 class="text-xs font-medium text-gray-500 mb-2">Logs</h5>
+                                        <pre class="text-xs bg-gray-100 p-2 rounded overflow-x-auto">{{ finding.evidence.logs|join('\n') }}</pre>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            <!-- Recommendation -->
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-900 mb-2">Recommendation</h4>
+                                <p class="text-sm text-gray-600">{{ finding.recommendation }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics and Visualizations -->
+    {% if include_charts %}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <div class="bg-white shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">Statistics and Visualizations</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Risk Distribution Chart -->
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">Risk Distribution</h3>
+                        <div id="riskDistributionChart" class="h-64"></div>
+                    </div>
+                    
+                    <!-- Cache Behavior Chart -->
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">Cache Behavior</h3>
+                        <div id="cacheBehaviorChart" class="h-64"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer class="mt-8 mb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="border-t pt-4">
+                <p class="text-center text-sm text-gray-500">
+                    Generated by CacheXSSDetector v{{ metadata.version }} | {{ metadata.generated_at }}
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Charts -->
+    {% if include_charts %}
+    <script>
+        // Risk Distribution Chart
+        const riskDistributionData = JSON.parse('{{ risk_distribution_data|tojson|safe }}');
+        
+        Plotly.newPlot('riskDistributionChart', [{
+            values: riskDistributionData.values,
+            labels: riskDistributionData.labels,
+            type: 'pie',
+            marker: {
+                colors: riskDistributionData.colors
+            }
+        }], {
+            margin: {t: 0, b: 0, l: 0, r: 0},
+            showlegend: true,
+            legend: {
+                orientation: 'h',
+                y: -0.2
+            }
+        });
+        
+        // Cache Behavior Chart
+        const cacheBehaviorData = JSON.parse('{{ cache_behavior_data|tojson|safe }}');
+        
+        Plotly.newPlot('cacheBehaviorChart', [{
+            x: cacheBehaviorData.x,
+            y: cacheBehaviorData.y,
+            type: 'bar',
+            marker: {
+                color: '#4F46E5'
+            }
+        }], {
+            margin: {t: 0, b: 40, l: 40, r: 0},
+            xaxis: {
+                title: 'Cache Status'
+            },
+            yaxis: {
+                title: 'Count'
+            }
+        });
+    </script>
+    {% endif %}
+</body>
+</html>
