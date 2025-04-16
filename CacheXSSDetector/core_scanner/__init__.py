@@ -1,21 +1,17 @@
 """
 Core Scanner Module
 
-This module coordinates the core scanning functionality, integrating URL manipulation,
-cache behavior analysis, XSS payload generation, and response analysis.
+This module initializes and coordinates the core scanning components for
+cache-based XSS vulnerability detection.
 """
 
 import logging
 from typing import Dict, List, Optional, Set, Tuple
-import asyncio
-from datetime import datetime
-import time
-from urllib.parse import urlparse
-
 from .url_path_manipulation import URLPathManipulator
 from .cache_behavior_analysis import CacheBehaviorAnalyzer
 from .xss_payload_generator import XSSPayloadGenerator
 from .response_analyzer import ResponseAnalyzer
+from .advanced_xss_detector import AdvancedXSSDetector
 
 class CoreScanner:
     """
@@ -26,6 +22,11 @@ class CoreScanner:
         """
         Initialize the Core Scanner.
         
+        Args:
+            config (dict): Configuration settings for core scanning.
+        """
+        self.logger = logging.getLogger('cachexssdetector.core_scanner')
+        self.config = config
         
         # Initialize components
         self.url_manipulator = URLPathManipulator(config.get('url_path', {}))
