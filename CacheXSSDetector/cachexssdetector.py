@@ -1,313 +1,381 @@
 #!/usr/bin/env python3
 """
-CacheXSSDetector - A comprehensive tool for detecting cache-based XSS vulnerabilities.
+CacheXSSDetector - A security scanner for detecting cache-based XSS vulnerabilities
 
-This is the main entry point for the CacheXSSDetector application.
+This tool identifies Cross-Site Scripting (XSS) vulnerabilities that can be exploited
+through caching mechanisms in web applications and CDNs.
 """
 
 import argparse
+import asyncio
+import json
 import logging
 import os
 import sys
-import yaml
+import time
 from datetime import datetime
+from typing import Dict, List, Optional
 
-# Add the current directory to the path so we can import our modules
-sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+# Add the parent directory to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# Import core modules
-from core_scanner.url_path_manipulation import URLPathManipulator
-from core_scanner.cache_behavior_analysis import CacheBehaviorAnalyzer
-from core_scanner.xss_payload_generator import XSSPayloadGenerator
-from core_scanner.response_analyzer import ResponseAnalyzer
-from request_components.http_client import HTTPClient
-from verification_system.multi_client_simulator import MultiClientSimulator
-from verification_system.cache_hit_miss_detector import CacheHitMissDetector
-from verification_system.false_positive_reducer import FalsePositiveReducer
-from reporting_module.vulnerability_classification import VulnerabilityClassifier
-from reporting_module.risk_assessment import RiskAssessor
-from reporting_module.enhanced_reporting_tools import ReportGenerator
+# Import core components
+from CacheXSSDetector.core_scanner import CoreScanner
+from CacheXSSDetector.verification_system import VerificationSystem
+from CacheXSSDetector.reporting_module import ReportGenerator, RiskAssessor
+from CacheXSSDetector.reporting_module.vulnerability_classification import VulnerabilityClassifier
 
+# Constants
+DEFAULT_CONFIG_PATH = os.path.join(os.path.dirname(__file__), 'config', 'default_config.json')
+DEFAULT_OUTPUT_DIR = os.path.join(os.path.dirname(__file__), 'reports')
+DEFAULT_LOG_DIR = os.path.join(os.path.dirname(__file__), 'logs')
 
-def setup_logging(config):
+class CacheXSSDetector:
     """
-    Set up logging based on the configuration.
-    
-    Args:
-        config (dict): The application configuration.
+    Main class for the Cache-based XSS Detector tool.
     """
-    log_config = config.get('logging', {})
-    log_level = getattr(logging, log_config.get('level', 'INFO'))
-    log_format = log_config.get('format', '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     
-    # Configure the root logger
-    logging.basicConfig(
-        level=log_level,
-        format=log_format,
-        handlers=[
-            logging.StreamHandler() if log_config.get('console', True) else logging.NullHandler(),
-            logging.FileHandler(log_config.get('file', 'logs/cachexssdetector.log'))
-        ]
-    )
-    
-    # Create the logs directory if it doesn't exist
-    os.makedirs(os.path.dirname(log_config.get('file', 'logs/cachexssdetector.log')), exist_ok=True)
-    
-    logger = logging.getLogger('cachexssdetector')
-    logger.info("Logging initialized")
-    return logger
-
-
-def load_config(config_path='config.yaml'):
-    """
-    Load the application configuration from the YAML file.
-    
-    Args:
-        config_path (str): Path to the configuration file.
+    def __init__(self, config_path: Optional[str] = None):
+        """
+        Initialize the Cache-based XSS Detector.
         
-    Returns:
-        dict: The configuration as a dictionary.
-    """
-    try:
-        with open(config_path, 'r') as config_file:
-            config = yaml.safe_load(config_file)
-        return config
-    except FileNotFoundError:
-        print(f"Configuration file not found: {config_path}")
-        print("Please create a configuration file or use the example provided.")
-        sys.exit(1)
-    except yaml.YAMLError as e:
-        print(f"Error parsing configuration file: {e}")
-        sys.exit(1)
-
-
-def parse_arguments():
-    """
-    Parse command line arguments.
-    
-    Returns:
-        argparse.Namespace: The parsed arguments.
-    """
-    parser = argparse.ArgumentParser(
-        description="CacheXSSDetector - A tool for detecting cache-based XSS vulnerabilities"
-    )
-    
-    parser.add_argument('--url', '-u', type=str, help='Target URL to scan')
-    parser.add_argument('--config', '-c', type=str, default='config.yaml', 
-                        help='Path to the configuration file')
-    parser.add_argument('--output', '-o', type=str, 
-                        help='Output file for the scan report')
-    parser.add_argument('--format', '-f', type=str, choices=['html', 'pdf', 'json', 'csv', 'xml'], 
-                        help='Report format')
-    parser.add_argument('--verbose', '-v', action='store_true', 
-                        help='Enable verbose output')
-    parser.add_argument('--quiet', '-q', action='store_true', 
-                        help='Suppress output')
-    parser.add_argument('--depth', '-d', type=int, 
-                        help='Maximum scanning depth')
-    parser.add_argument('--payloads', '-p', type=str, 
-                        help='Path to custom XSS payloads file')
-    parser.add_argument('--profile', type=str, 
-                        choices=['quick', 'deep', 'stealth'], 
-                        help='Use a predefined scanning profile')
-    
-    return parser.parse_args()
-
-
-def init_components(config, args):
-    """
-    Initialize all components based on the configuration and command line arguments.
-    
-    Args:
-        config (dict): The application configuration.
-        args (argparse.Namespace): The command line arguments.
+        Args:
+            config_path (str, optional): Path to configuration file.
+        """
+        # Set up configuration
+        self.config = self._load_config(config_path or DEFAULT_CONFIG_PATH)
         
-    Returns:
-        dict: A dictionary containing all initialized components.
-    """
-    # Override config with command line arguments if provided
-    scanner_config = config.get('core_scanner', {})
-    if args.depth:
-        scanner_config['max_depth'] = args.depth
-    if args.payloads:
-        scanner_config['custom_payloads_path'] = args.payloads
-    
-    # Initialize HTTP client
-    http_client = HTTPClient(config.get('request_components', {}))
-    
-    # Initialize core scanner components
-    url_manipulator = URLPathManipulator(scanner_config)
-    cache_analyzer = CacheBehaviorAnalyzer(scanner_config)
-    payload_generator = XSSPayloadGenerator(scanner_config)
-    response_analyzer = ResponseAnalyzer(scanner_config)
-    
-    # Initialize verification system components
-    verification_config = config.get('verification_system', {})
-    multi_client = MultiClientSimulator(verification_config.get('multi_client', {}))
-    cache_detector = CacheHitMissDetector(verification_config.get('cache_detection', {}))
-    fp_reducer = FalsePositiveReducer(verification_config.get('false_positive', {}))
-    
-    # Initialize reporting module components
-    reporting_config = config.get('reporting', {})
-    report_format = args.format or reporting_config.get('default_format', 'html')
-    vulnerability_classifier = VulnerabilityClassifier()
-    risk_assessor = RiskAssessor()
-    report_generator = ReportGenerator(reporting_config, report_format)
-    
-    return {
-        'http_client': http_client,
-        'url_manipulator': url_manipulator,
-        'cache_analyzer': cache_analyzer,
-        'payload_generator': payload_generator,
-        'response_analyzer': response_analyzer,
-        'multi_client': multi_client,
-        'cache_detector': cache_detector,
-        'fp_reducer': fp_reducer,
-        'vulnerability_classifier': vulnerability_classifier,
-        'risk_assessor': risk_assessor,
-        'report_generator': report_generator
-    }
-
-
-def run_scan(url, components, config, logger):
-    """
-    Run the security scan on the target URL.
-    
-    Args:
-        url (str): The target URL to scan.
-        components (dict): The initialized components.
-        config (dict): The application configuration.
-        logger (logging.Logger): The logger instance.
+        # Set up logging
+        self._setup_logging()
         
-    Returns:
-        dict: The scan results.
-    """
-    logger.info(f"Starting scan of {url}")
-    
-    # Extract components
-    http_client = components['http_client']
-    url_manipulator = components['url_manipulator']
-    cache_analyzer = components['cache_analyzer']
-    payload_generator = components['payload_generator']
-    response_analyzer = components['response_analyzer']
-    multi_client = components['multi_client']
-    cache_detector = components['cache_detector']
-    fp_reducer = components['fp_reducer']
-    
-    # Step 1: Generate manipulated URLs
-    logger.info("Generating manipulated URLs")
-    manipulated_urls = url_manipulator.generate_urls(url)
-    
-    # Step 2: Generate XSS payloads
-    logger.info("Generating XSS payloads")
-    payloads = payload_generator.generate_payloads()
-    
-    # Step 3: Analyze cache behavior
-    logger.info("Analyzing cache behavior")
-    cache_behavior = cache_analyzer.analyze(url, http_client)
-    
-    # Step 4: Perform scanning with multiple clients
-    logger.info("Performing multi-client scanning")
-    raw_results = multi_client.simulate(manipulated_urls, payloads, http_client)
-    
-    # Step 5: Detect cache hits/misses
-    logger.info("Detecting cache hits and misses")
-    cache_results = cache_detector.detect(raw_results)
-    
-    # Step 6: Analyze responses for XSS
-    logger.info("Analyzing responses for XSS payloads")
-    xss_findings = response_analyzer.analyze(cache_results)
-    
-    # Step 7: Reduce false positives
-    logger.info("Reducing false positives")
-    verified_findings = fp_reducer.reduce(xss_findings, http_client)
-    
-    logger.info(f"Scan completed with {len(verified_findings)} verified findings")
-    
-    return {
-        'url': url,
-        'timestamp': datetime.now().isoformat(),
-        'cache_behavior': cache_behavior,
-        'findings': verified_findings
-    }
-
-
-def generate_report(scan_results, components, args):
-    """
-    Generate a report based on the scan results.
-    
-    Args:
-        scan_results (dict): The scan results.
-        components (dict): The initialized components.
-        args (argparse.Namespace): The command line arguments.
+        # Initialize components
+        self.core_scanner = CoreScanner(self.config.get('core_scanner', {}))
+        self.verification_system = VerificationSystem(self.config.get('verification', {}))
+        self.risk_assessor = RiskAssessor(self.config.get('risk_assessment', {}))
+        self.vuln_classifier = VulnerabilityClassifier(self.config.get('classification', {}))
+        self.report_generator = ReportGenerator(self.config.get('reporting', {}))
         
-    Returns:
-        str: The path to the generated report.
-    """
-    # Extract components
-    vulnerability_classifier = components['vulnerability_classifier']
-    risk_assessor = components['risk_assessor']
-    report_generator = components['report_generator']
+        self.logger.info("CacheXSSDetector initialized")
     
-    # Classify vulnerabilities
-    classified_findings = vulnerability_classifier.classify(scan_results['findings'])
+    def _load_config(self, config_path: str) -> Dict:
+        """
+        Load configuration from file.
+        
+        Args:
+            config_path (str): Path to configuration file.
+            
+        Returns:
+            dict: Configuration settings.
+        """
+        try:
+            with open(config_path, 'r') as f:
+                config = json.load(f)
+            
+            # Use default configuration if file not found
+            return config
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"Error loading configuration: {e}")
+            print("Using default configuration.")
+            return {}
     
-    # Assess risk
-    risk_assessment = risk_assessor.assess(classified_findings)
+    def _setup_logging(self):
+        """Set up logging configuration."""
+        log_level = getattr(logging, self.config.get('log_level', 'INFO'))
+        log_file = os.path.join(
+            self.config.get('log_dir', DEFAULT_LOG_DIR),
+            f"cachexss_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+        )
+        
+        # Create log directory if it doesn't exist
+        os.makedirs(os.path.dirname(log_file), exist_ok=True)
+        
+        # Configure root logger
+        self.logger = logging.getLogger('cachexssdetector')
+        self.logger.setLevel(log_level)
+        
+        # Create file handler
+        file_handler = logging.FileHandler(log_file)
+        file_handler.setLevel(log_level)
+        
+        # Create console handler
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(log_level)
+        
+        # Create formatter and add to handlers
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        file_handler.setFormatter(formatter)
+        console_handler.setFormatter(formatter)
+        
+        # Add handlers to logger
+        self.logger.addHandler(file_handler)
+        self.logger.addHandler(console_handler)
     
-    # Generate report
-    report_data = {
-        'url': scan_results['url'],
-        'timestamp': scan_results['timestamp'],
-        'cache_behavior': scan_results['cache_behavior'],
-        'findings': classified_findings,
-        'risk_assessment': risk_assessment
-    }
+    async def scan_target(self, target_url: str, options: Optional[Dict] = None) -> Dict:
+        """
+        Scan a target URL for cache-based XSS vulnerabilities.
+        
+        Args:
+            target_url (str): Target URL to scan.
+            options (dict, optional): Scan options.
+            
+        Returns:
+            dict: Scan results.
+        """
+        results = {
+            'target_url': target_url,
+            'scan_start_time': datetime.now().isoformat(),
+            'findings': [],
+            'verified_findings': [],
+            'risk_assessment': {},
+            'scan_duration': 0
+        }
+        
+        start_time = time.time()
+        
+        try:
+            self.logger.info(f"Starting scan of {target_url}")
+            
+            # Perform core scanning
+            scan_results = await self.core_scanner.scan_target(target_url, options)
+            
+            # Verify findings
+            if scan_results.get('findings'):
+                verification_results = await self.verification_system.verify_batch(scan_results['findings'])
+                results['verified_findings'] = verification_results.get('verified_findings', [])
+                
+                self.logger.info(
+                    f"Verified {len(results['verified_findings'])} of {len(scan_results['findings'])} findings"
+                )
+            
+            # Assess risk
+            if results['verified_findings']:
+                findings_for_assessment = [f['finding'] for f in results['verified_findings']]
+                risk_assessment = self.risk_assessor.assess_batch(findings_for_assessment)
+                results['risk_assessment'] = risk_assessment
+                
+                # Classify vulnerabilities
+                classification_results = self.vuln_classifier.classify_batch(findings_for_assessment)
+                results['vulnerability_classification'] = classification_results
+                
+                # Combine findings with classifications and risk assessments
+                processed_findings = []
+                for i, finding in enumerate(findings_for_assessment):
+                    processed_finding = finding.copy()
+                    
+                    # Add risk assessment
+                    if i < len(risk_assessment.get('highest_risks', [])):
+                        processed_finding['risk_assessment'] = risk_assessment['highest_risks'][i]
+                    
+                    # Add classification
+                    if i < len(classification_results.get('classifications', [])):
+                        processed_finding['classification'] = classification_results['classifications'][i]['classification']
+                    
+                    processed_findings.append(processed_finding)
+                
+                results['findings'] = processed_findings
+            
+            results['scan_status'] = 'completed'
+            
+        except Exception as e:
+            error_msg = f"Error during scan: {str(e)}"
+            self.logger.error(error_msg)
+            results['scan_status'] = 'error'
+            results['error'] = error_msg
+        
+        # Calculate scan duration
+        results['scan_duration'] = time.time() - start_time
+        results['scan_end_time'] = datetime.now().isoformat()
+        
+        self.logger.info(
+            f"Scan completed in {results['scan_duration']:.2f} seconds. "
+            f"Found {len(results['findings'])} verified vulnerabilities."
+        )
+        
+        return results
     
-    output_path = args.output or f"reports/report_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-    report_path = report_generator.generate(report_data, output_path)
+    async def scan_targets(self, targets: List[str], options: Optional[Dict] = None) -> Dict:
+        """
+        Scan multiple targets.
+        
+        Args:
+            targets (list): List of target URLs to scan.
+            options (dict, optional): Scan options.
+            
+        Returns:
+            dict: Aggregated scan results.
+        """
+        aggregated_results = {
+            'targets': targets,
+            'scan_start_time': datetime.now().isoformat(),
+            'results': [],
+            'summary': {
+                'total_targets': len(targets),
+                'total_findings': 0,
+                'risk_levels': {}
+            },
+            'scan_duration': 0
+        }
+        
+        start_time = time.time()
+        
+        try:
+            for target in targets:
+                result = await self.scan_target(target, options)
+                aggregated_results['results'].append(result)
+                
+                # Update summary statistics
+                aggregated_results['summary']['total_findings'] += len(result.get('findings', []))
+                
+                # Update risk level counts
+                risk_assessment = result.get('risk_assessment', {})
+                for level, count in risk_assessment.get('risk_levels', {}).items():
+                    if level in aggregated_results['summary']['risk_levels']:
+                        aggregated_results['summary']['risk_levels'][level] += count
+                    else:
+                        aggregated_results['summary']['risk_levels'][level] = count
+        
+        except Exception as e:
+            error_msg = f"Error during batch scan: {str(e)}"
+            self.logger.error(error_msg)
+            aggregated_results['error'] = error_msg
+        
+        # Calculate scan duration
+        aggregated_results['scan_duration'] = time.time() - start_time
+        aggregated_results['scan_end_time'] = datetime.now().isoformat()
+        
+        self.logger.info(
+            f"Batch scan completed in {aggregated_results['scan_duration']:.2f} seconds. "
+            f"Found {aggregated_results['summary']['total_findings']} vulnerabilities "
+            f"across {len(targets)} targets."
+        )
+        
+        return aggregated_results
     
-    return report_path
-
+    def generate_report(self, scan_results: Dict, output_path: Optional[str] = None) -> str:
+        """
+        Generate a security report from scan results.
+        
+        Args:
+            scan_results (dict): Scan results to report on.
+            output_path (str, optional): Path to save the report.
+            
+        Returns:
+            str: Path to the generated report.
+        """
+        try:
+            self.logger.info("Generating security report")
+            
+            # Prepare report data
+            metadata = {
+                'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                'generator': 'CacheXSSDetector',
+                'version': getattr(self, '__version__', '1.0.0'),
+                'scan_duration': scan_results.get('scan_duration', 0)
+            }
+            
+            # Determine output path
+            if not output_path:
+                output_dir = self.config.get('output_dir', DEFAULT_OUTPUT_DIR)
+                timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                output_path = os.path.join(output_dir, f"cachexss_report_{timestamp}.html")
+            
+            # Create output directory if it doesn't exist
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            
+            # Generate report
+            report_path = self.report_generator.generate_report(
+                {
+                    'findings': scan_results.get('findings', []),
+                    'summary': scan_results.get('risk_assessment', {}).get('summary', {}),
+                    'metadata': metadata,
+                    'include_charts': True,
+                    'level_colors': {
+                        'critical': 'red',
+                        'high': 'orange', 
+                        'medium': 'yellow',
+                        'low': 'blue',
+                        'info': 'gray'
+                    },
+                    'severity_colors': {
+                        'critical': 'red',
+                        'high': 'orange', 
+                        'medium': 'yellow',
+                        'low': 'blue',
+                        'info': 'gray'
+                    }
+                },
+                output_path
+            )
+            
+            self.logger.info(f"Report generated: {report_path}")
+            return report_path
+            
+        except Exception as e:
+            self.logger.error(f"Error generating report: {e}")
+            raise
 
 def main():
-    """Main function."""
-    # Parse arguments
-    args = parse_arguments()
+    """Main entry point for the CacheXSSDetector tool."""
+    parser = argparse.ArgumentParser(description="CacheXSSDetector - A security scanner for detecting cache-based XSS vulnerabilities")
     
-    # Load configuration
-    config = load_config(args.config)
+    parser.add_argument('-t', '--target', help="Target URL to scan")
+    parser.add_argument('-f', '--file', help="File containing list of target URLs")
+    parser.add_argument('-c', '--config', help="Path to configuration file")
+    parser.add_argument('-o', '--output', help="Path to save the report")
+    parser.add_argument('-v', '--verbose', action='store_true', help="Enable verbose output")
+    parser.add_argument('--version', action='store_true', help="Show version information")
     
-    # Set up logging
-    logger = setup_logging(config)
+    args = parser.parse_args()
     
-    if args.verbose:
-        logger.setLevel(logging.DEBUG)
-    elif args.quiet:
-        logger.setLevel(logging.WARNING)
+    # Show version information
+    if args.version:
+        print("CacheXSSDetector v1.0.0")
+        return 0
     
-    # Initialize components
-    components = init_components(config, args)
-    
-    # Validate URL
-    if not args.url:
-        logger.error("No target URL specified. Use --url to specify a target.")
-        sys.exit(1)
+    # Check if target or file is provided
+    if not args.target and not args.file:
+        parser.print_help()
+        print("\nError: You must specify a target URL (-t) or a file containing targets (-f).")
+        return 1
     
     try:
-        # Run the scan
-        scan_results = run_scan(args.url, components, config, logger)
+        # Initialize detector
+        detector = CacheXSSDetector(args.config)
+        
+        # Get targets
+        targets = []
+        if args.target:
+            targets.append(args.target)
+        
+        if args.file:
+            with open(args.file, 'r') as f:
+                targets.extend([line.strip() for line in f if line.strip()])
+        
+        # Configure scan options
+        scan_options = {
+            'verbose': args.verbose
+        }
+        
+        # Run scan
+        if len(targets) == 1:
+            # Single target scan
+            scan_results = asyncio.run(detector.scan_target(targets[0], scan_options))
+        else:
+            # Multiple targets scan
+            scan_results = asyncio.run(detector.scan_targets(targets, scan_options))
         
         # Generate report
-        report_path = generate_report(scan_results, components, args)
+        report_path = detector.generate_report(scan_results, args.output)
         
-        logger.info(f"Report generated: {report_path}")
-        print(f"Report generated: {report_path}")
+        print(f"\nScan completed. Report saved to: {report_path}")
+        return 0
         
+    except KeyboardInterrupt:
+        print("\nScan interrupted by user.")
+        return 130
     except Exception as e:
-        logger.exception(f"An error occurred during the scan: {e}")
-        sys.exit(1)
+        print(f"\nError: {e}")
+        return 1
 
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    sys.exit(main())
