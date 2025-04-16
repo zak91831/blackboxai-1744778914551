@@ -1,10 +1,21 @@
 """
-Reporting Module for CacheXSSDetector
+Reporting Module Package
 
-This module contains components for generating and customizing reports:
-- Vulnerability Classification
-- Risk Assessment
-- Enhanced Reporting Tools
-- Compliance Reporting
-- Customizable Report Generation
+This package provides components for generating detailed security reports
+for cache-based XSS vulnerabilities.
 """
+
+from .risk_assessment import RiskAssessor
+from .vulnerability_classification import VulnerabilityClassifier
+from .report_generator import ReportGenerator
+from .enhanced_reporting_tools import EnhancedReportGenerator
+
+# For backward compatibility, make EnhancedReportGenerator available as ReportGenerator
+ReportGenerator = EnhancedReportGenerator
+
+__all__ = [
+    'RiskAssessor',
+    'VulnerabilityClassifier',
+    'ReportGenerator',
+    'EnhancedReportGenerator'
+]
