@@ -1,0 +1,337 @@
+# CacheXSSDetector Configuration File
+
+# Core Scanner Configuration
+core_scanner:
+  # Maximum URL scanning depth
+  max_depth: 3
+  # Request timeout in seconds
+  timeout: 30
+  # Maximum number of URLs to scan per domain
+  max_urls_per_domain: 100
+  # Enable/disable specific scanning modules
+  modules:
+    url_path_manipulation: true
+    cache_behavior_analysis: true
+    xss_payload_generator: true
+    response_analyzer: true
+  # Custom XSS payloads file path (leave empty to use default payloads)
+  custom_payloads_path: ""
+
+# Request Components Configuration
+request_components:
+  # Default headers to be sent with requests
+  default_headers:
+    User-Agent: "CacheXSSDetector/1.0"
+    Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+    Accept-Language: "en-US,en;q=0.5"
+  # Cookies to be sent with requests (if any)
+  cookies: {}
+  # HTTP client settings
+  client:
+    # Number of retries for failed requests
+    max_retries: 3
+    # Connection timeout in seconds
+    connect_timeout: 10
+    # Read timeout in seconds
+    read_timeout: 30
+    # Use keep-alive connections
+    keep_alive: true
+  # Proxy configuration
+  proxy:
+    # Enable/disable proxy
+    enabled: false
+    # Proxy URL (e.g., http://proxy.example.com:8080)
+    url: ""
+    # Authentication credentials (if required)
+    auth:
+      username: ""
+      password: ""
+
+# Verification System Configuration
+verification_system:
+  # Multi-client simulator settings
+  multi_client:
+    # Number of simulated clients
+    num_clients: 3
+    # Delay between client requests (in seconds)
+    request_delay: 1
+  # Cache hit/miss detection settings
+  cache_detection:
+    # Headers to use for cache detection
+    cache_headers:
+      - "X-Cache"
+      - "CF-Cache-Status"
+      - "Age"
+    # Custom cache detection logic (advanced)
+    custom_detection_enabled: false
+  # False positive reduction settings
+  false_positive:
+    # Confidence threshold (0-100)
+    min_confidence: 75
+    # Number of verification rounds
+    verification_rounds: 2
+
+# Reporting Module Configuration
+reporting:
+  # Default report format
+  default_format: "html"
+  # Available formats
+  available_formats:
+    - "html"
+    - "pdf"
+    - "json"
+    - "csv"
+    - "xml"
+  # Report customization
+  customization:
+    # Company name for reports
+    company_name: "Your Company"
+    # Company logo path
+    logo_path: "assets/logo.png"
+    # Report color scheme
+    colors:
+      primary: "#007bff"
+      secondary: "#6c757d"
+      success: "#28a745"
+      danger: "#dc3545"
+      warning: "#ffc107"
+      info: "#17a2b8"
+  # Compliance reporting
+  compliance:
+    # Enable specific compliance reports
+    pci_dss: false
+    hipaa: false
+    gdpr: false
+    iso27001: false
+
+# Real-Time Monitoring Configuration
+monitoring:
+  # Enable/disable real-time monitoring
+  enabled: true
+  # Monitoring interval in minutes
+  interval: 60
+  # Alerting configuration
+  alerts:
+    # Email alerts
+    email:
+      enabled: false
+      smtp_server: "smtp.example.com"
+      smtp_port: 587
+      smtp_username: ""
+      smtp_password: ""
+      from_address: "alerts@example.com"
+      to_addresses: []
+    # Webhook alerts
+    webhook:
+      enabled: false
+      url: ""
+      custom_headers: {}
+    # SMS alerts
+    sms:
+      enabled: false
+      provider: "twilio"  # Options: twilio, nexmo
+      account_sid: ""
+      auth_token: ""
+      from_number: ""
+      to_numbers: []
+
+# Collaboration Features Configuration
+collaboration:
+  # Shared reports settings
+  shared_reports:
+    # Enable/disable shared reports
+    enabled: true
+    # Default expiration time for shared links (in days)
+    default_expiration: 7
+  # Commenting system
+  comments:
+    # Enable/disable commenting
+    enabled: true
+    # Allow anonymous comments
+    allow_anonymous: false
+  # Task assignment
+  tasks:
+    # Enable/disable task assignment
+    enabled: true
+    # Default task deadline (in days)
+    default_deadline: 14
+    # Send reminders for upcoming deadlines
+    send_reminders: true
+
+# API Access Configuration
+api:
+  # Enable/disable API
+  enabled: true
+  # API authentication
+  auth:
+    # Authentication method: api_key, jwt, oauth2
+    method: "api_key"
+    # JWT settings (if method is jwt)
+    jwt:
+      secret_key: "change_this_to_a_random_secret"
+      expiration: 86400  # 24 hours in seconds
+    # OAuth2 settings (if method is oauth2)
+    oauth2:
+      providers:
+        - name: "google"
+          client_id: ""
+          client_secret: ""
+  # Rate limiting
+  rate_limit:
+    # Enable/disable rate limiting
+    enabled: true
+    # Maximum number of requests per minute
+    max_requests_per_minute: 60
+
+# Third-Party Tool Integration Configuration
+integrations:
+  # SIEM integration
+  siem:
+    # Enable/disable SIEM integration
+    enabled: false
+    # SIEM type: splunk, elastic, arcsight, qradar
+    type: "elastic"
+    # Connection details
+    connection:
+      url: ""
+      api_key: ""
+  # Bug tracking integration
+  bug_tracking:
+    # Enable/disable bug tracking integration
+    enabled: false
+    # Bug tracker type: jira, github, gitlab, azure_devops
+    type: "jira"
+    # Connection details
+    connection:
+      url: ""
+      username: ""
+      api_token: ""
+      project_key: ""
+  # WAF integration
+  waf:
+    # Enable/disable WAF integration
+    enabled: false
+    # WAF type: cloudflare, akamai, imperva, f5
+    type: "cloudflare"
+    # Connection details
+    connection:
+      api_endpoint: ""
+      api_key: ""
+      zone_id: ""
+
+# User Management Configuration
+user_management:
+  # Authentication settings
+  authentication:
+    # Session expiration time (in hours)
+    session_expiration: 24
+    # Password policy
+    password_policy:
+      min_length: 10
+      require_uppercase: true
+      require_lowercase: true
+      require_numbers: true
+      require_special_chars: true
+  # Role-based access control
+  rbac:
+    # Default roles
+    roles:
+      - name: "admin"
+        description: "Full access to all features"
+        permissions: ["*"]
+      - name: "analyst"
+        description: "Can run scans and view reports"
+        permissions: ["scan:run", "report:view", "report:create"]
+      - name: "viewer"
+        description: "Can only view reports"
+        permissions: ["report:view"]
+
+# Database Configuration
+database:
+  # Database type: sqlite, mysql, postgresql, mongodb
+  type: "sqlite"
+  # Connection details
+  connection:
+    # SQLite
+    sqlite:
+      path: "db/cachexssdetector.db"
+    # MySQL
+    mysql:
+      host: "localhost"
+      port: 3306
+      database: "cachexssdetector"
+      username: ""
+      password: ""
+    # PostgreSQL
+    postgresql:
+      host: "localhost"
+      port: 5432
+      database: "cachexssdetector"
+      username: ""
+      password: ""
+    # MongoDB
+    mongodb:
+      uri: "mongodb://localhost:27017"
+      database: "cachexssdetector"
+
+# Logging Configuration
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+  # Log file path
+  file: "logs/cachexssdetector.log"
+  # Maximum log file size in MB
+  max_size: 10
+  # Number of backup log files to keep
+  backup_count: 5
+  # Log format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  # Enable/disable console logging
+  console: true
+
+# Advanced Features Configuration
+advanced_features:
+  # Machine learning integration
+  machine_learning:
+    # Enable/disable machine learning
+    enabled: true
+    # Model path
+    model_path: "models/xss_detection_model.pkl"
+    # Retraining interval in days
+    retraining_interval: 30
+  # CI/CD integration
+  ci_cd:
+    # Enable/disable CI/CD integration
+    enabled: false
+    # Integration type: github_actions, jenkins, gitlab_ci, azure_devops
+    type: "github_actions"
+    # Configuration file path
+    config_path: "ci_cd/config.json"
+  # User interface improvements
+  ui:
+    # Theme: light, dark, auto
+    theme: "light"
+    # Enable/disable animations
+    animations: true
+    # Dashboard refresh interval in seconds
+    dashboard_refresh: 60
+  # Customizable scanning profiles
+  scanning_profiles:
+    # Predefined profiles
+    predefined:
+      - name: "quick"
+        description: "Quick scan with basic payloads"
+        max_depth: 1
+        max_urls_per_domain: 50
+        timeout: 15
+      - name: "deep"
+        description: "Deep scan with all payloads"
+        max_depth: 5
+        max_urls_per_domain: 200
+        timeout: 60
+      - name: "stealth"
+        description: "Stealthy scan with delayed requests"
+        max_depth: 3
+        max_urls_per_domain: 100
+        timeout: 30
+        request_delay: 3
