@@ -1,0 +1,2 @@
+[console_scripts]
+cachexssdetector = CacheXSSDetector.cachexssdetector:main
