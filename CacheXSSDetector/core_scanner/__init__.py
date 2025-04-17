@@ -12,6 +12,8 @@ from .cache_behavior_analysis import CacheBehaviorAnalyzer
 from .xss_payload_generator import XSSPayloadGenerator
 from .response_analyzer import ResponseAnalyzer
 from .advanced_xss_detector import AdvancedXSSDetector
+from .waf_bypass import WAFBypass
+from .xss0r_integration import XSS0rIntegration
 
 class CoreScanner:
     """
