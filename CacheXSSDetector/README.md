@@ -13,6 +13,8 @@ CacheXSSDetector is a specialized security testing tool designed to identify, ve
 - **Cache Behavior Analysis**: In-depth analysis of caching patterns and behaviors
 - **XSS Payload Generation**: Sophisticated payload generation with cache-aware capabilities
 - **Response Analysis**: Comprehensive analysis of cached responses and XSS indicators
+- **Advanced XSS Detection**: Context-aware XSS vulnerability detection with WAF bypass capabilities
+- **XSS0r Integration**: Powerful crawling, form testing, and comprehensive scanning similar to XSS0r
 
 ### Request Components
 - **HTTP Client**: Robust HTTP client with cache-aware request handling
@@ -63,6 +65,40 @@ python cachexssdetector.py scan \
     --output report.html \
     --verbose
 ```
+
+### XSS0r CLI Tool
+The XSS0r integration provides an advanced CLI tool for comprehensive XSS scanning:
+
+```bash
+# Basic usage
+python xss0r_cli.py http://example.com
+
+# Advanced options
+python xss0r_cli.py http://example.com \
+    --depth 3 \
+    --max-urls 100 \
+    --delay 1.5 \
+    --output scan_results.json \
+    --verbose
+
+# Testing with blind XSS
+python xss0r_cli.py http://example.com \
+    --blind-xss \
+    --callback-url https://your-callback-server.com/callback
+```
+
+Options:
+- `--depth`: Maximum crawl depth (default: 2)
+- `--max-urls`: Maximum URLs to scan per domain (default: 50)
+- `--delay`: Delay between requests in seconds (default: 1.0)
+- `--output`: Output file for scan results (JSON format)
+- `--verbose`: Enable detailed logging
+- `--no-forms`: Disable form testing
+- `--no-headers`: Disable header testing
+- `--no-cookies`: Disable cookie testing
+- `--no-dom`: Disable DOM-based XSS testing
+- `--blind-xss`: Enable blind XSS testing
+- `--callback-url`: URL for blind XSS callbacks
 
 ### Configuration
 Create a custom configuration file by copying and modifying the default config:
