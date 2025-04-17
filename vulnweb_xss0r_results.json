@@ -1,0 +1,1372 @@
+{
+  "start_url": "http://testphp.vulnweb.com/",
+  "urls_scanned": 25,
+  "forms_tested": 21,
+  "vulnerabilities_found": 0,
+  "scan_details": [
+    {
+      "url": "http://testphp.vulnweb.com/listproducts.php?cat=1",
+      "parameter": "cat",
+      "test_type": "url_parameter",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/listproducts.php?cat=1",
+        "parameter": "cat",
+        "payloads_tested": 4,
+        "vulnerable": false,
+        "successful_payload": null,
+        "tests": [
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/listproducts.php?cat=2",
+      "parameter": "cat",
+      "test_type": "url_parameter",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/listproducts.php?cat=2",
+        "parameter": "cat",
+        "payloads_tested": 4,
+        "vulnerable": false,
+        "successful_payload": null,
+        "tests": [
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/listproducts.php?cat=3",
+      "parameter": "cat",
+      "test_type": "url_parameter",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/listproducts.php?cat=3",
+        "parameter": "cat",
+        "payloads_tested": 4,
+        "vulnerable": false,
+        "successful_payload": null,
+        "tests": [
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/listproducts.php?cat=4",
+      "parameter": "cat",
+      "test_type": "url_parameter",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/listproducts.php?cat=4",
+        "parameter": "cat",
+        "payloads_tested": 4,
+        "vulnerable": false,
+        "successful_payload": null,
+        "tests": [
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/artists.php?artist=1",
+      "parameter": "artist",
+      "test_type": "url_parameter",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/artists.php?artist=1",
+        "parameter": "artist",
+        "payloads_tested": 4,
+        "vulnerable": false,
+        "successful_payload": null,
+        "tests": [
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/artists.php?artist=2",
+      "parameter": "artist",
+      "test_type": "url_parameter",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/artists.php?artist=2",
+        "parameter": "artist",
+        "payloads_tested": 4,
+        "vulnerable": false,
+        "successful_payload": null,
+        "tests": [
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/artists.php?artist=3",
+      "parameter": "artist",
+      "test_type": "url_parameter",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/artists.php?artist=3",
+        "parameter": "artist",
+        "payloads_tested": 4,
+        "vulnerable": false,
+        "successful_payload": null,
+        "tests": [
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/hpp/?pp=12",
+      "parameter": "pp",
+      "test_type": "url_parameter",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/hpp/?pp=12",
+        "parameter": "pp",
+        "payloads_tested": 4,
+        "vulnerable": false,
+        "successful_payload": null,
+        "tests": [
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/guestbook.php",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/guestbook.php",
+        "method": "post",
+        "inputs_tested": 2,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "name",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "name",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "name",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "name",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "text",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "text",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "text",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "text",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/userinfo.php",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/userinfo.php",
+        "method": "post",
+        "inputs_tested": 2,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "uname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/userinfo.php",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/userinfo.php",
+        "method": "post",
+        "inputs_tested": 2,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "uname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/secured/newuser.php",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/secured/newuser.php",
+        "method": "post",
+        "inputs_tested": 8,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "uuname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uuname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uuname",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uuname",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "upass",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "upass",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "upass",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "upass",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "upass2",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "upass2",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "upass2",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "upass2",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "urname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "urname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "urname",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "urname",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "ucc",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "ucc",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "ucc",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "ucc",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uemail",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uemail",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uemail",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uemail",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uphone",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uphone",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uphone",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uphone",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uaddress",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uaddress",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uaddress",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uaddress",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    }
+  ],
+  "vulnerabilities": [],
+  "scan_duration": 90.00525856018066,
+  "scan_time": "2025-04-17T12:23:57.664341",
+  "xss0r_version": "1.0.0"
+}
