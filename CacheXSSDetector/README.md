@@ -15,6 +15,8 @@ CacheXSSDetector is a specialized security testing tool designed to identify, ve
 - **Response Analysis**: Comprehensive analysis of cached responses and XSS indicators
 - **Advanced XSS Detection**: Context-aware XSS vulnerability detection with WAF bypass capabilities
 - **XSS0r Integration**: Powerful crawling, form testing, and comprehensive scanning similar to XSS0r
+- **Custom Header Injection**: Detection of XSS vulnerabilities via HTTP request headers
+- **Adaptive Rate Limiting**: Smart throttling to avoid WAF blocks and blacklisting
 
 ### Request Components
 - **HTTP Client**: Robust HTTP client with cache-aware request handling
@@ -85,6 +87,10 @@ python xss0r_cli.py http://example.com \
 python xss0r_cli.py http://example.com \
     --blind-xss \
     --callback-url https://your-callback-server.com/callback
+    
+# Header-based XSS testing
+python xss0r_cli.py http://example.com \
+    --header-tests 5
 ```
 
 Options:
@@ -95,10 +101,29 @@ Options:
 - `--verbose`: Enable detailed logging
 - `--no-forms`: Disable form testing
 - `--no-headers`: Disable header testing
+- `--header-tests`: Number of header tests per URL (default: 3)
 - `--no-cookies`: Disable cookie testing
 - `--no-dom`: Disable DOM-based XSS testing
 - `--blind-xss`: Enable blind XSS testing
 - `--callback-url`: URL for blind XSS callbacks
+
+### Rate-Limited XSS0r CLI Tool
+For scanning sensitive targets or avoiding WAF blocks, use the rate-limited version:
+
+```bash
+# Basic usage with adaptive rate limiting
+python rate_limited_cli.py http://example.com
+
+# Control rate limiting settings
+python rate_limited_cli.py http://example.com \
+    --rate-limit 30 \
+    --delay 2.0 \
+    --header-tests 3
+```
+
+Additional Rate-Limited Options:
+- `--rate-limit`: Maximum requests per minute (default: 60)
+- `--disable-adaptive`: Disable adaptive rate limiting (fixed rate)
 
 ### Configuration
 Create a custom configuration file by copying and modifying the default config:
@@ -117,6 +142,10 @@ core_scanner:
   cache_behavior:
     min_samples: 5
     time_window: 300
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+    adaptive: true
 ```
 
 ### Request Components Settings
@@ -127,6 +156,10 @@ request_components:
     max_retries: 3
   header_manipulation:
     enable_custom_headers: true
+    test_headers:
+      - User-Agent
+      - X-Forwarded-For
+      - Referer
 ```
 
 ### Verification System Settings
@@ -145,6 +178,8 @@ verification_system:
    - Cache Behavior Analysis
    - XSS Payload Generator
    - Response Analyzer
+   - Custom Header Injector
+   - Rate-Limited Scanner
 
 2. **Request Components**
    - HTTP Client
@@ -160,6 +195,10 @@ verification_system:
    - Vulnerability Classification
    - Risk Assessment
    - Report Generator
+
+5. **Utilities**
+   - Rate Limiter
+   - WAF Detection & Bypass
 
 ## Development
 
@@ -188,11 +227,13 @@ flake8 cachexssdetector/
 - Always obtain proper authorization before testing
 - Follow responsible disclosure practices
 - Be aware of potential impact on cache systems
+- Use rate limiting to avoid disrupting services
 
 ### Limitations
 - Tool may impact cache performance
 - Some detection methods are timing-dependent
 - False positives may occur in complex scenarios
+- WAF evasion techniques should only be used legally
 
 ## Best Practices
 
@@ -207,6 +248,7 @@ flake8 cachexssdetector/
 2. Use cache segmentation
 3. Apply security headers
 4. Regular cache validation
+5. Filter and sanitize headers
 
 ## Troubleshooting
 
@@ -225,6 +267,11 @@ flake8 cachexssdetector/
    - Adjust request delays
    - Reduce parallel requests
    - Monitor system resources
+
+4. **WAF Blocks**
+   - Enable adaptive rate limiting
+   - Reduce scan intensity
+   - Use stealthier scanning techniques
 
 ## License
 
