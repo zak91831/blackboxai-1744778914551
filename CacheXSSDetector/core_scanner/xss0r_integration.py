@@ -50,6 +50,7 @@ class XSS0rIntegration:
         self.test_headers = self.config.get('test_headers', True)
         self.test_cookies = self.config.get('test_cookies', True)
         self.test_dom = self.config.get('test_dom', True)
+        self.header_tests_per_url = self.config.get('header_tests_per_url', 3)  # Limit header tests to avoid excessive requests
         
         # Blind XSS settings
         self.blind_xss_enabled = self.config.get('blind_xss_enabled', False)
@@ -88,6 +89,10 @@ class XSS0rIntegration:
         """
         self.xss_detector = xss_detector
         self.waf_bypass = waf_bypass
+        
+        # Initialize the custom header injector
+        from .custom_header_injector import CustomHeaderInjector
+        self.header_injector = CustomHeaderInjector()
     
     def crawl(self, start_url: str) -> Dict:
         """
@@ -178,6 +183,100 @@ class XSS0rIntegration:
         
         return results
     
+    def _test_headers(self, url: str) -> Dict:
+        """
+        Test a URL for header-based XSS vulnerabilities.
+        
+        Args:
+            url (str): The URL to test.
+            
+        Returns:
+            dict: Test results.
+        """
+        if not hasattr(self, 'header_injector'):
+            self.logger.warning("Header injector not initialized, skipping header tests")
+            return {"url": url, "vulnerable": False, "tests": []}
+        
+        # Generate malicious headers for testing
+        malicious_headers = self.header_injector.generate_malicious_headers(self.waf_bypass)
+        
+        # Limit the number of tests to avoid excessive requests
+        test_headers = malicious_headers[:self.header_tests_per_url]
+        
+        results = {
+            "url": url,
+            "headers_tested": 0,
+            "vulnerable": False,
+            "successful_header": None,
+            "successful_payload": None,
+            "tests": []
+        }
+        
+        # Test each malicious header set
+        for header_set in test_headers:
+            results["headers_tested"] += 1
+            
+            try:
+                # Send the request with malicious headers
+                response = requests.get(
+                    url, 
+                    headers=header_set['headers'], 
+                    timeout=self.timeout,
+                    allow_redirects=True
+                )
+                
+                # Analyze header reflection
+                reflection_analysis = self.header_injector.analyze_header_reflection(
+                    response.text, 
+                    header_set['payload']
+                )
+                
+                # Use the XSS detector to analyze the response if available
+                vulnerable = False
+                if self.xss_detector:
+                    analysis = self.xss_detector.analyze_response(url, {
+                        'body': response.text,
+                        'headers': dict(response.headers),
+                        'status_code': response.status_code
+                    })
+                    
+                    vulnerable = len(analysis.get('vulnerabilities', [])) > 0
+                else:
+                    # If no detector available, use reflection analysis as fallback
+                    vulnerable = reflection_analysis.get('potentially_exploitable', False)
+                
+                test_result = {
+                    "header": header_set['header_name'],
+                    "payload": header_set['payload'],
+                    "reflected": reflection_analysis.get('reflected', False),
+                    "encoded_reflected": reflection_analysis.get('encoded_reflected', False),
+                    "vulnerable": vulnerable
+                }
+                
+                if 'technique' in header_set:
+                    test_result["bypass_technique"] = header_set['technique']
+                
+                results["tests"].append(test_result)
+                
+                # If vulnerable, update the results
+                if vulnerable:
+                    results["vulnerable"] = True
+                    results["successful_header"] = header_set['header_name']
+                    results["successful_payload"] = header_set['payload']
+                    
+                    # No need to test more header sets
+                    break
+                
+            except Exception as e:
+                self.logger.error(f"Error testing header {header_set['header_name']} with payload: {str(e)}")
+                results["tests"].append({
+                    "header": header_set['header_name'],
+                    "payload": header_set['payload'],
+                    "error": str(e)
+                })
+        
+        return results
+
     def scan_site(self, start_url: str) -> Dict:
         """
         Scan a website for XSS vulnerabilities.
@@ -201,6 +300,7 @@ class XSS0rIntegration:
             "start_url": start_url,
             "urls_scanned": 0,
             "forms_tested": 0,
+            "headers_tested": 0,
             "vulnerabilities_found": 0,
             "scan_details": []
         }
@@ -251,6 +351,28 @@ class XSS0rIntegration:
                     "test_type": "form",
                     "vulnerable": form_results.get("vulnerable", False),
                     "details": form_results
+                })
+        
+        # Test HTTP Headers
+        if self.test_headers:
+            self.logger.info("Testing HTTP headers for XSS vulnerabilities")
+            # Select a subset of URLs to test headers on to reduce test time
+            header_test_urls = crawl_results["discovered_urls"][:5]  # Test first 5 URLs
+            
+            for url in header_test_urls:
+                scan_results["headers_tested"] += 1
+                
+                header_results = self._test_headers(url)
+                
+                if header_results.get("vulnerable", False):
+                    vulnerabilities.append(header_results)
+                    scan_results["vulnerabilities_found"] += 1
+                
+                scan_results["scan_details"].append({
+                    "url": url,
+                    "test_type": "http_headers",
+                    "vulnerable": header_results.get("vulnerable", False),
+                    "details": header_results
                 })
         
         # Test DOM-based XSS if enabled and supported
