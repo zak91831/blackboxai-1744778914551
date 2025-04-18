@@ -14,6 +14,8 @@ from .response_analyzer import ResponseAnalyzer
 from .advanced_xss_detector import AdvancedXSSDetector
 from .waf_bypass import WAFBypass
 from .xss0r_integration import XSS0rIntegration
+from .custom_header_injector import CustomHeaderInjector
+from .rate_limited_xss0r import RateLimitedXSS0rIntegration
 
 class CoreScanner:
     """
