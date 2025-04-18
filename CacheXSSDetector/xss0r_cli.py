@@ -72,6 +72,12 @@ def setup_args():
         help='Disable header testing'
     )
     parser.add_argument(
+        '--header-tests', 
+        type=int, 
+        default=3,
+        help='Number of header tests per URL (default: 3)'
+    )
+    parser.add_argument(
         '--no-cookies', 
         action='store_false', 
         dest='test_cookies',
@@ -206,7 +212,8 @@ def main():
         'test_cookies': args.test_cookies,
         'test_dom': args.test_dom and headless_support,
         'blind_xss_enabled': args.blind_xss,
-        'callback_url': args.callback_url
+        'callback_url': args.callback_url,
+        'header_tests_per_url': args.header_tests
     }
     
     # Initialize components
