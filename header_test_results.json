@@ -1,0 +1,780 @@
+{
+  "start_url": "http://testphp.vulnweb.com/",
+  "urls_scanned": 10,
+  "forms_tested": 12,
+  "headers_tested": 5,
+  "vulnerabilities_found": 0,
+  "scan_details": [
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/guestbook.php",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/guestbook.php",
+        "method": "post",
+        "inputs_tested": 2,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "name",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "name",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "name",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "name",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "text",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "text",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "text",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "text",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/userinfo.php",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/userinfo.php",
+        "method": "post",
+        "inputs_tested": 2,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "uname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": true,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/userinfo.php",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/userinfo.php",
+        "method": "post",
+        "inputs_tested": 2,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "uname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "uname",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "pass",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/search.php?test=query",
+      "form_id": "",
+      "test_type": "form",
+      "vulnerable": false,
+      "details": {
+        "form_url": "http://testphp.vulnweb.com/search.php?test=query",
+        "method": "post",
+        "inputs_tested": 1,
+        "vulnerable": false,
+        "vulnerable_input": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<script>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\tipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          },
+          {
+            "input": "searchFor",
+            "payload": "<scr\nipt>alert('XSS')</script>",
+            "reflected": false,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/",
+      "test_type": "http_headers",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/",
+        "headers_tested": 5,
+        "vulnerable": false,
+        "successful_header": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "header": "User-Agent",
+            "payload": "<script>alert(\"header-xss\")</script>",
+            "reflected": false,
+            "encoded_reflected": false,
+            "vulnerable": false
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><script>alert(\"header-xss\")</script>",
+            "reflected": false,
+            "encoded_reflected": false,
+            "vulnerable": false
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><img src=x onerror=alert(\"header-xss\")>",
+            "reflected": false,
+            "encoded_reflected": false,
+            "vulnerable": false
+          },
+          {
+            "header": "User-Agent",
+            "payload": "javascript:alert('header-xss')",
+            "reflected": false,
+            "encoded_reflected": false,
+            "vulnerable": false
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><svg/onload=alert(\"header-xss\")>",
+            "reflected": false,
+            "encoded_reflected": false,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/index.php",
+      "test_type": "http_headers",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/index.php",
+        "headers_tested": 5,
+        "vulnerable": false,
+        "successful_header": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "header": "User-Agent",
+            "payload": "<script>alert(\"header-xss\")</script>",
+            "reflected": false,
+            "encoded_reflected": false,
+            "vulnerable": false
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><script>alert(\"header-xss\")</script>",
+            "reflected": false,
+            "encoded_reflected": false,
+            "vulnerable": false
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><img src=x onerror=alert(\"header-xss\")>",
+            "reflected": false,
+            "encoded_reflected": false,
+            "vulnerable": false
+          },
+          {
+            "header": "User-Agent",
+            "payload": "javascript:alert('header-xss')",
+            "reflected": false,
+            "encoded_reflected": false,
+            "vulnerable": false
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><svg/onload=alert(\"header-xss\")>",
+            "reflected": false,
+            "encoded_reflected": false,
+            "vulnerable": false
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/categories.php",
+      "test_type": "http_headers",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/categories.php",
+        "headers_tested": 5,
+        "vulnerable": false,
+        "successful_header": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "header": "User-Agent",
+            "payload": "<script>alert(\"header-xss\")</script>",
+            "error": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><script>alert(\"header-xss\")</script>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /categories.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b631101c0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><img src=x onerror=alert(\"header-xss\")>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /categories.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b6308bc40>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "javascript:alert('header-xss')",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /categories.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b6308a7a0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><svg/onload=alert(\"header-xss\")>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /categories.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b63110910>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/artists.php",
+      "test_type": "http_headers",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/artists.php",
+        "headers_tested": 5,
+        "vulnerable": false,
+        "successful_header": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "header": "User-Agent",
+            "payload": "<script>alert(\"header-xss\")</script>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /artists.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b631111b0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><script>alert(\"header-xss\")</script>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /artists.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b6308a2f0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><img src=x onerror=alert(\"header-xss\")>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /artists.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b63088ca0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "javascript:alert('header-xss')",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /artists.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b6308b160>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><svg/onload=alert(\"header-xss\")>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /artists.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b63088d30>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://testphp.vulnweb.com/disclaimer.php",
+      "test_type": "http_headers",
+      "vulnerable": false,
+      "details": {
+        "url": "http://testphp.vulnweb.com/disclaimer.php",
+        "headers_tested": 5,
+        "vulnerable": false,
+        "successful_header": null,
+        "successful_payload": null,
+        "tests": [
+          {
+            "header": "User-Agent",
+            "payload": "<script>alert(\"header-xss\")</script>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /disclaimer.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b6308b0d0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><script>alert(\"header-xss\")</script>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /disclaimer.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b6308b8e0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><img src=x onerror=alert(\"header-xss\")>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /disclaimer.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b6308ab00>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "javascript:alert('header-xss')",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /disclaimer.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b6308bfa0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          },
+          {
+            "header": "User-Agent",
+            "payload": "\"><svg/onload=alert(\"header-xss\")>",
+            "error": "HTTPConnectionPool(host='testphp.vulnweb.com', port=80): Max retries exceeded with url: /disclaimer.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b63089cc0>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+          }
+        ]
+      }
+    }
+  ],
+  "vulnerabilities": [],
+  "scan_duration": 41.148937940597534,
+  "scan_time": "2025-04-18T06:32:09.213593",
+  "xss0r_version": "1.0.0"
+}
